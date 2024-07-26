@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -35,11 +36,15 @@ class PostController extends Controller
 
 	public function edit(Post $post): Response
 	{
+		Gate::authorize('update', $post);
+
 		return Inertia::render('Posts/Edit', ['post' => $post]);
 	}
 
 	public function update(Post $post, Request $request): RedirectResponse
 	{
+		Gate::authorize('update', $post);
+
 		$request->validate([
 			'url' => 'required',
 			'title' => 'required',
@@ -57,6 +62,8 @@ class PostController extends Controller
 	{
 		$post = Post::findOrFail($id);
 
+		Gate::authorize('show', $post);
+
 		if ($post->slug != $slug) {
 			return redirect()->route('videos.show', [$post->id, $post->slug]);
 		}
@@ -66,6 +73,8 @@ class PostController extends Controller
 
 	public function destroy(Post $post): RedirectResponse
 	{
+		Gate::authorize('delete', $post);
+
 		Session::flash('message', "<strong>{$post->title}</strong> has been deleted.");
 
 		$post->delete();
