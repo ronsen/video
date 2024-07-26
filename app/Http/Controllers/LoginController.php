@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
 
-class AuthController extends Controller
+class LoginController extends Controller
 {
 	public function create(): Response
 	{
