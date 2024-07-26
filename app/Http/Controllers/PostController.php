@@ -20,7 +20,7 @@ class PostController extends Controller
 	public function store(Request $request): RedirectResponse
 	{
 		$request->validate([
-			'url' => 'required',
+			'url' => 'required|url',
 			'title' => 'required',
 		]);
 
@@ -46,7 +46,7 @@ class PostController extends Controller
 		Gate::authorize('update', $post);
 
 		$request->validate([
-			'url' => 'required',
+			'url' => 'required|url',
 			'title' => 'required',
 		]);
 

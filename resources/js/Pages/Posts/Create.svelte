@@ -12,6 +12,21 @@
     function submit() {
         $form.post('/posts');
     }
+
+	async function fetchTitle() {
+		try {
+			if (!form.title) {
+				const { title } = await fetch('/api/title?url=' + $form.url)
+					.then(response => {
+						return response.json();
+					});
+
+				$form.title = title;
+			}
+		} catch (error) {
+			console.error('Error fetching the title:', error);
+		}
+	}
 </script>
 
 <svelte:head>
@@ -21,7 +36,14 @@
 <App>
     <form on:submit|preventDefault={submit}>
 		<div class="mb-3">
-            <input type="url" bind:value={$form.url} placeholder="URL" class="input input-bordered w-full" autofocus>
+            <!-- svelte-ignore a11y-autofocus -->
+            <input
+				type="url"
+				bind:value={$form.url}
+				on:change={fetchTitle}
+				placeholder="URL"
+				class="input input-bordered w-full"
+				autofocus>
             {#if $form.errors.url}
                 <div class="text-error text-sm font-bold mt-1">{$form.errors.url}</div>
             {/if}
