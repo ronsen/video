@@ -3,6 +3,8 @@
     import App from "../Layouts/App.svelte";
 
     let form = useForm({
+		url: null,
+		source: null,
         title: null,
         content: null
     });
@@ -18,6 +20,12 @@
 
 <App>
     <form on:submit|preventDefault={submit}>
+		<div class="mb-3">
+            <input type="url" bind:value={$form.url} placeholder="URL" class="input input-bordered w-full" autofocus>
+            {#if $form.errors.url}
+                <div class="text-error text-sm font-bold mt-1">{$form.errors.url}</div>
+            {/if}
+        </div>
         <div class="mb-3">
             <input type="text" bind:value={$form.title} placeholder="Title" class="input input-bordered w-full">
             {#if $form.errors.title}
@@ -25,7 +33,7 @@
             {/if}
         </div>
         <div class="mb-3">
-            <textarea bind:value={$form.content} rows="5" placeholder="Content" class="textarea textarea-bordered w-full" />
+            <textarea bind:value={$form.content} rows="5" class="textarea textarea-bordered w-full" />
         </div>
         <button type="submit" class="btn btn-primary" disabled={$form.processing}>Save</button>
     </form>

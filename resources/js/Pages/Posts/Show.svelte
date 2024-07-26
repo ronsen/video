@@ -21,6 +21,10 @@
 
 <App>
     <article>
+		<div class="mb-3">
+			{@html post.video_html}
+		</div>
+
         <div class="flex justify-between items-center border-b border-base-300 pb-3 mb-3">
             <div class="title font-bold">{post.title}</div>
 
@@ -32,7 +36,7 @@
             {/if}
         </div>
     
-        <div class="content prose max-w-none mb-3">
+        <div class="content max-w-none mb-3">
             {@html post.content_to_html}
         </div>
     </article>
@@ -41,7 +45,7 @@
 <dialog bind:this={dialog} class="modal">
     <form on:submit|preventDefault={submit} class="modal-box">
         <h3 class="font-bold text-lg">Confirm</h3>
-        <p class="py-4">Delete this post?</p>
+        <p class="py-4">Delete this video?</p>
 
         <div class="modal-action">
             <button class="btn btn-neutral btn-sm" on:click|preventDefault={() => dialog.close()}>No</button>

@@ -19,4 +19,5 @@ Route::get('/login', [\App\Http\Controllers\AuthController::class, 'create'])->n
 Route::post('/login', [\App\Http\Controllers\AuthController::class, 'store']);
 Route::post('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
 
-Route::resource('/posts', \App\Http\Controllers\PostController::class);
+Route::resource('/posts', \App\Http\Controllers\PostController::class)->except('show');
+Route::get('/video/{id}/{slug}', [\App\Http\Controllers\PostController::class, 'show'])->name('videos.show');

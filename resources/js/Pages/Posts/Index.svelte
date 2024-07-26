@@ -31,13 +31,13 @@
         {#each posts.data as post}
             <div class="flex justify-between items-baseline border-b border-base-300 pb-2 mb-2">
                 <div class="note-title">
-                    <Link href="/posts/{post.id}">{post.title}</Link>
+                    <Link href="/video/{post.id}/{post.slug}">{post.title}</Link>
                 </div>
 
                 {#if $page.props.auth.user}
                     <div class="inline-flex gap-3">
-                        <Link href="/posts/{post.id}/edit" title="Edit Post" class="text-gray-500"><i class="bi bi-pencil-square"></i></Link>
-                        <button title="Delete Post" class="text-gray-500" on:click={() => destroy(post)}><i class="bi bi-trash"></i></button>
+                        <Link href="/posts/{post.id}/edit" title="Edit Video" class="text-gray-500"><i class="bi bi-pencil-square"></i></Link>
+                        <button title="Delete Video" class="text-gray-500" on:click={() => destroy(post)}><i class="bi bi-trash"></i></button>
                     </div>
                 {/if}
             </div>
@@ -51,7 +51,7 @@
     <form on:submit|preventDefault={submit} class="modal-box">
         <input type="hidden" bind:this={post}>
         <h3 class="font-bold text-lg">Confirm</h3>
-        <p class="py-4">Delete this post?</p>
+        <p class="py-4">Delete this video?</p>
 
         <div class="modal-action">
             <button class="btn btn-neutral btn-sm" on:click|preventDefault={() => dialog.close()}>No</button>

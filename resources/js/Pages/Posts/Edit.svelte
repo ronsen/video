@@ -5,6 +5,7 @@
     export let post;
 
     let form = useForm({
+		url: post.url,
         title: post.title,
         content: post.content
     });
@@ -20,6 +21,12 @@
 
 <App>
     <form on:submit|preventDefault={submit}>
+		<div class="mb-3">
+            <input type="url" bind:value={$form.url} placeholder="URL" class="input input-bordered w-full" autofocus>
+            {#if $form.errors.url}
+                <div class="text-error text-sm font-bold mt-1">{$form.errors.url}</div>
+            {/if}
+        </div>
         <div class="mb-3">
             <input type="text" bind:value={$form.title} placeholder="Title" class="input input-bordered w-full">
             {#if $form.errors.title}
