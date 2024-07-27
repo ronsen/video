@@ -4,6 +4,9 @@
     import Pagination from "../Components/Pagination.svelte";
     import App from "../Layouts/App.svelte";
 
+	import Fa from "svelte-fa";
+    import { faPencilAlt, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+
     export let posts;
     let dialog;
     let post;
@@ -29,15 +32,15 @@
         <Alert>Empty.</Alert>
     {:else}
         {#each posts.data as post}
-            <div class="flex justify-between items-baseline border-b border-base-300 pb-2 mb-2">
+            <div class="flex justify-between items-center border-b border-base-300 pb-2 mb-2">
                 <div class="note-title">
                     <Link href="/video/{post.id}/{post.slug}">{post.title}</Link>
                 </div>
 
                 {#if $page.props.auth.user}
                     <div class="inline-flex gap-3">
-                        <Link href="/posts/{post.id}/edit" title="Edit Video" class="text-gray-500"><i class="bi bi-pencil-square"></i></Link>
-                        <button title="Delete Video" class="text-gray-500" on:click={() => destroy(post)}><i class="bi bi-trash"></i></button>
+                        <Link href="/posts/{post.id}/edit" title="Edit Video" class="text-gray-500"><Fa icon={faPencilAlt} /></Link>
+                        <button title="Delete Video" class="text-gray-500" on:click={() => destroy(post)}><Fa icon={faTrashAlt} /></button>
                     </div>
                 {/if}
             </div>

@@ -16,12 +16,13 @@
 </script>
 
 <svelte:head>
-    <title>Edit Post</title>
+    <title>Edit Video</title>
 </svelte:head>
 
 <App>
     <form on:submit|preventDefault={submit}>
 		<div class="mb-3">
+            <!-- svelte-ignore a11y-autofocus -->
             <input type="url" bind:value={$form.url} placeholder="URL" class="input input-bordered w-full" autofocus>
             {#if $form.errors.url}
                 <div class="text-error text-sm font-bold mt-1">{$form.errors.url}</div>

@@ -2,6 +2,9 @@
     import { page, Link, useForm } from "@inertiajs/svelte";
     import App from "../Layouts/App.svelte";
 
+	import Fa from "svelte-fa";
+    import { faPencilAlt, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+
     export let post;
     let dialog;
     let form = useForm();
@@ -29,9 +32,9 @@
             <div class="title font-bold">{post.title}</div>
 
             {#if $page.props.auth.user}
-                <div class="inline-flex gap-3">
-                    <Link href="/posts/{post.id}/edit" title="Edit Post" class="text-gray-500"><i class="bi bi-pencil-square"></i></Link>
-                    <button title="Delete Post" class="text-gray-500" on:click={() => destroy()}><i class="bi bi-trash"></i></button>
+                <div class="inline-flex items-center gap-3">
+                    <Link href="/posts/{post.id}/edit" title="Edit Post" class="text-gray-500"><Fa icon={faPencilAlt} /></Link>
+                    <button title="Delete Post" class="text-gray-500" on:click={() => destroy()}><Fa icon={faTrashAlt} /></button>
                 </div>
             {/if}
         </div>

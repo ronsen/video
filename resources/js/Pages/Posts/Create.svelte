@@ -30,7 +30,7 @@
 </script>
 
 <svelte:head>
-    <title>Add New Post</title>
+    <title>Add New Video</title>
 </svelte:head>
 
 <App>
