@@ -35,7 +35,7 @@
             {/if}
         </div>
         <div class="mb-3">
-            <textarea bind:value={$form.content} rows="10" placeholder="Content" class="textarea textarea-bordered w-full" />
+            <textarea bind:value={$form.content} rows="5" class="textarea textarea-bordered w-full" />
         </div>
         <button type="submit" class="btn btn-primary" disabled={$form.processing}>Save</button>
     </form>
