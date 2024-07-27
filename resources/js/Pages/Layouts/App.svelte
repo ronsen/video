@@ -5,6 +5,7 @@
 
 	import Fa from "svelte-fa";
     import { faCirclePlus, faRightFromBracket, faRightToBracket } from "@fortawesome/free-solid-svg-icons";
+    import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
     function logout() {
         router.post('/logout');
@@ -33,3 +34,7 @@
 
     <slot />
 </main>
+
+<footer class="absolute bottom-0 left-1/2 -translate-x-1/2 py-4">
+	<a href="https://github.com/ronsen/video" target="_blank"><Fa icon={faGithub} /></a>
+</footer>
