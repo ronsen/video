@@ -25,6 +25,7 @@ class Post extends Model
 		'slug',
 		'content_to_html',
 		'video_html',
+		'thumbnail_url',
 	];
 
 	public function user(): BelongsTo
@@ -50,6 +51,13 @@ class Post extends Model
 	{
 		return new Attribute(
 			get: fn () => VideoUtil::parse($this->url)
+		);
+	}
+
+	public function thumbnailUrl(): Attribute
+	{
+		return new Attribute(
+			get: fn () => VideoUtil::getYoutubeThumbnailURL($this->url, 'high')
 		);
 	}
 }

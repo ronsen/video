@@ -3,10 +3,11 @@
     import App from "../Layouts/App.svelte";
 
 	import Fa from "svelte-fa";
-    import { faPencilAlt, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+    import { faPencilAlt, faPlayCircle, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
     export let post;
     let dialog;
+	let video;
     let form = useForm();
 
     function destroy() {
@@ -16,6 +17,10 @@
     function submit() {
         $form.delete(`/posts/${post.id}`);
     }
+
+	function play() {
+		video.innerHTML = post.video_html;
+	}
 </script>
 
 <svelte:head>
@@ -24,8 +29,14 @@
 
 <App>
     <article>
-		<div class="mb-3">
-			{@html post.video_html}
+		<div bind:this={video} class="relative mb-3">
+			<img src="{post.thumbnail_url}" alt="{post.title}" class="w-full rounded-lg">
+
+			<button 
+				on:click={play}
+				class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-red-500 hover:text-red-600">
+				<Fa icon={faPlayCircle} size="4x" />
+			</button>
 		</div>
 
         <div class="flex justify-between items-center border-b border-base-300 pb-3 mb-3">
