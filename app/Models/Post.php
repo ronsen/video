@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
-use App\Utils\VideoUtil;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
+use App\Utils\YoutubeUtil;
 
 class Post extends Model
 {
@@ -50,14 +50,14 @@ class Post extends Model
 	public function videoHtml(): Attribute
 	{
 		return new Attribute(
-			get: fn () => VideoUtil::parse($this->url)
+			get: fn () => YoutubeUtil::parse($this->url)
 		);
 	}
 
 	public function thumbnailUrl(): Attribute
 	{
 		return new Attribute(
-			get: fn () => VideoUtil::getYoutubeThumbnailURL($this->url, 'high')
+			get: fn () => YoutubeUtil::getThumbnailURL($this->url, 'high')
 		);
 	}
 }
