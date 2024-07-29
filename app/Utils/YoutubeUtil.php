@@ -30,7 +30,7 @@ class YoutubeUtil
 		try {
 			$videoId = static::getVideoId($url);
 
-			$html = '<iframe class="w-full aspect-video" src="https://www.youtube.com/embed/%s" '
+			$html = '<iframe class="w-full aspect-video" src="https://www.youtube.com/embed/%s?autoplay=1" '
 				. 'allow="accelerometer; autoplay; encrypted-media; gyroscope; gyroscope; picture-in-picture; web-share" '
 				. 'referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>'
 				. '</iframe>';
