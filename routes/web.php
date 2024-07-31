@@ -17,7 +17,9 @@ Route::get('/login', [\App\Http\Controllers\LoginController::class, 'create'])
 	->middleware('guest')
 	->name('login');
 Route::post('/login', [\App\Http\Controllers\LoginController::class, 'store']);
-Route::post('/logout', [\App\Http\Controllers\LoginController::class, 'logout'])->name('logout');
+Route::post('/logout', [\App\Http\Controllers\LoginController::class, 'destroy'])
+	->middleware('auth')
+	->name('logout');
 
 Route::get('/oauth', [\App\Http\Controllers\OAuthController::class, 'index'])->name('oauth.index');
 Route::get('/oauth/callback', [\App\Http\Controllers\OAuthController::class, 'callback'])->name('oauth.callback');
