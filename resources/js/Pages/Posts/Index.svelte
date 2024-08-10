@@ -1,33 +1,46 @@
 <script>
-    import { page, Link, useForm } from "@inertiajs/svelte";
-    import Alert from "../Components/Alert.svelte";
-    import Pagination from "../Components/Pagination.svelte";
-    import App from "../Layouts/App.svelte";
+	import { page, Link, useForm } from "@inertiajs/svelte";
+	import Alert from "../Components/Alert.svelte";
+	import Pagination from "../Components/Pagination.svelte";
+	import App from "../Layouts/App.svelte";
 
 	import Fa from "svelte-fa";
-    import { faPencilAlt, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+	import { faPencilAlt, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
-    export let posts;
-    let dialog;
-    let post;
-    let form = useForm();
+	export let posts;
+	export let q;
 
-    function destroy(p) {
-        post = p;
-        dialog.showModal();
-    }
+	console.log(posts);
 
-    function submit() {
-        $form.delete(`/posts/${post.id}`);
-        dialog.close();
-    }
+	let dialog;
+	let post;
+	let form = useForm();
+
+	function destroy(p) {
+		post = p;
+		dialog.showModal();
+	}
+
+	function submit() {
+		$form.delete(`/posts/${post.id}`);
+		dialog.close();
+	}
 </script>
 
 <svelte:head>
-    <title>{$page.props.appName}</title>
+	<title>{$page.props.appName}</title>
 </svelte:head>
 
 <App>
+	<div class="mb-6">
+		<form method="get">
+			<div class="join w-full">
+				<input type="search" name="q" value="{q}" class="input input-bordered w-full join-item">
+				<button type="submit" class="btn btn-primary join-item">Search</button>
+			</div>
+		</form>
+	</div>
+
     {#if posts.data.length == 0}
         <Alert>Empty.</Alert>
     {:else}
