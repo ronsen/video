@@ -5,7 +5,7 @@
 	import App from "../Layouts/App.svelte";
 
 	import Fa from "svelte-fa";
-	import { faPencilAlt, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+	import { faMagnifyingGlass, faPencilAlt, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 	export let posts;
 	export let q;
@@ -35,8 +35,8 @@
 	<div class="mb-6">
 		<form method="get">
 			<div class="join w-full">
-				<input type="search" name="q" value="{q}" class="input input-bordered w-full join-item">
-				<button type="submit" class="btn btn-primary join-item">Search</button>
+				<input type="search" name="q" value="{q}" class="input input-bordered w-full join-item" required>
+				<button type="submit" class="btn btn-primary join-item"><Fa icon={faMagnifyingGlass} /></button>
 			</div>
 		</form>
 	</div>
@@ -52,8 +52,8 @@
 
                 {#if $page.props.auth.user}
                     <div class="inline-flex gap-3">
-                        <Link href="/posts/{post.id}/edit" title="Edit Video" class="text-gray-500"><Fa icon={faPencilAlt} /></Link>
-                        <button title="Delete Video" class="text-gray-500" on:click={() => destroy(post)}><Fa icon={faTrashAlt} /></button>
+                        <Link href="/posts/{post.id}/edit" title="Edit Video" class="text-base-300"><Fa icon={faPencilAlt} /></Link>
+                        <button title="Delete Video" class="text-base-300" on:click={() => destroy(post)}><Fa icon={faTrashAlt} /></button>
                     </div>
                 {/if}
             </div>

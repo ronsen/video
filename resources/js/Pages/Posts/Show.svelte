@@ -44,8 +44,8 @@
 
             {#if $page.props.auth.user}
                 <div class="inline-flex items-center gap-3">
-                    <Link href="/posts/{post.id}/edit" title="Edit Post" class="text-gray-500"><Fa icon={faPencilAlt} /></Link>
-                    <button title="Delete Post" class="text-gray-500" on:click={() => destroy()}><Fa icon={faTrashAlt} /></button>
+                    <Link href="/posts/{post.id}/edit" title="Edit Post" class="text-base-300"><Fa icon={faPencilAlt} /></Link>
+                    <button title="Delete Post" class="text-base-300" on:click={() => destroy()}><Fa icon={faTrashAlt} /></button>
                 </div>
             {/if}
         </div>
