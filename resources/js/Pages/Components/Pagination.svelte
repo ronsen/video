@@ -1,9 +1,12 @@
 <script>
-    import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
     import { Link } from "@inertiajs/svelte";
-	
-	import Fa from "svelte-fa";
-    
+
+    import Fa from "svelte-fa";
+    import {
+        faArrowLeft,
+        faArrowRight,
+    } from "@fortawesome/free-solid-svg-icons";
+
     export let data;
 </script>
 
@@ -12,13 +15,17 @@
         {#if data.prev_page_url}
             <Link href={data.prev_page_url}><Fa icon={faArrowLeft} /></Link>
         {:else}
-            <button class="btn-disabled text-base-300"><Fa icon={faArrowLeft} /></button>
+            <button class="btn-disabled text-base-300"
+                ><Fa icon={faArrowLeft} /></button
+            >
         {/if}
 
         {#if data.next_page_url}
             <Link href={data.next_page_url}><Fa icon={faArrowRight} /></Link>
         {:else}
-            <button class="btn-disabled text-base-300"><Fa icon={faArrowRight} /></button>
+            <button class="btn-disabled text-base-300"
+                ><Fa icon={faArrowRight} /></button
+            >
         {/if}
     </div>
 </div>

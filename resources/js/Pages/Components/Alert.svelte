@@ -1,5 +1,5 @@
 <script>
-	import Fa from "svelte-fa";
+    import Fa from "svelte-fa";
     import { faCircleInfo, faXmark } from "@fortawesome/free-solid-svg-icons";
 
     let show = true;
