@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
 use Inertia\Inertia;
@@ -25,7 +26,7 @@ class PostController extends Controller
 		]);
 
 		$post = Post::create([
-			'user_id' => auth()->user()->id,
+			'user_id' => Auth::user()->id,
 			'url' => $request->url,
 			'title' => $request->title,
 			'content' => $request->content,
