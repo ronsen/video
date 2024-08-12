@@ -1,5 +1,5 @@
 <script>
-    import { page, Link } from "@inertiajs/svelte";
+    import { page, Link, useForm } from "@inertiajs/svelte";
     import App from "../Layouts/App.svelte";
     import Alert from "../Components/Alert.svelte";
     import Pagination from "../Components/Pagination.svelte";
@@ -13,6 +13,14 @@
 
     export let posts;
     export let q;
+
+    let form = useForm({
+        q,
+    });
+
+    function submit() {
+        $form.get("/");
+    }
 </script>
 
 <svelte:head>
@@ -21,16 +29,18 @@
 
 <App>
     <div class="mb-6">
-        <form method="get">
+        <form on:submit|preventDefault={submit}>
             <div class="join w-full">
                 <input
                     type="search"
-                    name="q"
-                    value={q}
+                    bind:value={$form.q}
                     class="input input-bordered w-full join-item"
                     required
                 />
-                <button type="submit" class="btn btn-primary join-item"
+                <button
+                    type="submit"
+                    disabled={$form.processing}
+                    class="btn btn-primary join-item"
                     ><Fa icon={faMagnifyingGlass} /></button
                 >
             </div>
