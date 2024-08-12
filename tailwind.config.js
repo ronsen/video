@@ -4,7 +4,7 @@ export default {
     './storage/framework/views/*.php',
     './resources/views/**/*.blade.php',
     './resources/js/**/*.svelte',
-	'./app/Utils/VideoUtil.php',
+	'./app/Utils/YoutubeUtil.php',
   ],
   theme: {
     extend: {},
