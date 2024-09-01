@@ -1,6 +1,5 @@
 <script>
-    import { page, Link } from "@inertiajs/svelte";
-    import { router } from "@inertiajs/svelte";
+    import { page, Link, inertia } from "@inertiajs/svelte";
     import Alert from "../Components/Alert.svelte";
 
     import Fa from "svelte-fa";
@@ -10,10 +9,6 @@
         faRightToBracket,
     } from "@fortawesome/free-solid-svg-icons";
     import { faGithub } from "@fortawesome/free-brands-svg-icons";
-
-    function logout() {
-        router.post("/logout");
-    }
 </script>
 
 <main class="container mx-auto md:w-[720px] my-6 px-6 md:my-12">
@@ -27,7 +22,7 @@
         <div class="inline-flex gap-3">
             {#if $page.props.auth.user}
                 <Link href="/posts/create"><Fa icon={faCirclePlus} /></Link>
-                <button on:click|preventDefault={logout}
+                <button use:inertia={{ href: "/logout", method: "post" }}
                     ><Fa icon={faRightFromBracket} /></button
                 >
             {/if}
