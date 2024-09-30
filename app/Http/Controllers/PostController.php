@@ -21,15 +21,15 @@ class PostController extends Controller
 	public function store(Request $request): RedirectResponse
 	{
 		$request->validate([
-			'url' => 'required|url',
-			'title' => 'required',
+			'url' => ['required', 'url'],
+			'title' => ['required'],
 		]);
 
 		$post = Post::create([
 			'user_id' => Auth::user()->id,
-			'url' => $request->url,
-			'title' => $request->title,
-			'content' => $request->content,
+			'url' => $request->input('url'),
+			'title' => $request->input('title'),
+			'content' => $request->input('content'),
 		]);
 
 		return to_route('videos.show', [$post->id, $post->slug]);
@@ -47,13 +47,13 @@ class PostController extends Controller
 		Gate::authorize('update', $post);
 
 		$request->validate([
-			'url' => 'required|url',
-			'title' => 'required',
+			'url' => ['required', 'url'],
+			'title' => ['required'],
 		]);
 
-		$post->url = $request->url;
-		$post->title = $request->title;
-		$post->content = $request->content;
+		$post->url = $request->input('url');
+		$post->title = $request->input('title');
+		$post->content = $request->input('content');
 		$post->update();
 
 		return back()->with('message', "<strong>{$post->title}</strong> has been updated.");
