@@ -49,8 +49,14 @@
 
         {#if $page.props.auth.user}
             <div class="inline-flex items-center gap-3">
-                <a href={post.url} target="_blank"><Fa icon={faLink} /></a>
-                <Link href="/posts/{post.id}/edit"
+                <a
+                    href={post.url}
+                    class="text-zinc-400 hover:text-zinc-300"
+                    target="_blank"><Fa icon={faLink} /></a
+                >
+                <Link
+                    href="/posts/{post.id}/edit"
+                    class="text-zinc-400 hover:text-zinc-300"
                     ><Fa icon={faPencilAlt} /></Link
                 >
                 <Delete {post} />

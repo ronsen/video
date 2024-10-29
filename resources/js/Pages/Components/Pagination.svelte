@@ -13,15 +13,29 @@
 <div class="mt-6">
     <div class="flex justify-between gap-4">
         {#if data.prev_page_url}
-            <Link href={data.prev_page_url}><Fa icon={faArrowLeft} /></Link>
+            <Link
+                href={data.prev_page_url}
+                class="px-3 py-2 border border-zinc-500 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-sm text-white/90"
+                ><Fa icon={faArrowLeft} /></Link
+            >
         {:else}
-            <button class="disabled cursor-default"><Fa icon={faArrowLeft} /></button>
+            <button
+                class="px-3 py-2 border border-zinc-700 rounded-lg bg-zinc-800 text-sm text-white/70 cursor-default"
+                ><Fa icon={faArrowLeft} /></button
+            >
         {/if}
 
         {#if data.next_page_url}
-            <Link href={data.next_page_url}><Fa icon={faArrowRight} /></Link>
+            <Link
+                href={data.next_page_url}
+                class="px-3 py-2 border border-zinc-500 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-sm text-white/90"
+                ><Fa icon={faArrowRight} /></Link
+            >
         {:else}
-            <button class="disabled cursor-default"><Fa icon={faArrowRight} /></button>
+            <button
+                class="px-3 py-2 border border-zinc-700 rounded-lg bg-zinc-800 text-sm text-white/70 cursor-default"
+                ><Fa icon={faArrowRight} /></button
+            >
         {/if}
     </div>
 </div>

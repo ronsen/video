@@ -19,13 +19,13 @@
     }
 </script>
 
-<button class="text-base-300" on:click={() => destroy()}
+<button class="text-zinc-400 hover:text-zinc-300" on:click={() => destroy()}
     ><Fa icon={faTrashAlt} /></button
 >
 
 <dialog
     bind:this={dialog}
-    class="bg-zinc-800 text-white/90 p-6 w-full shadow-lg rounded-lg"
+    class="bg-zinc-800 text-white/90 p-6 w-full md:w-3/4 shadow-lg rounded-lg"
 >
     <form on:submit|preventDefault={submit}>
         <h3 class="font-bold">Delete this video?</h3>

@@ -4,7 +4,7 @@
 
     import Fa from "svelte-fa";
     import {
-        faCirclePlus,
+        faPlus,
         faRightFromBracket,
         faRightToBracket,
     } from "@fortawesome/free-solid-svg-icons";
@@ -21,14 +21,22 @@
 
         <div class="inline-flex gap-3">
             {#if $page.props.auth.user}
-                <Link href="/posts/create"><Fa icon={faCirclePlus} /></Link>
-                <button use:inertia={{ href: "/logout", method: "post" }}
+                <Link
+                    href="/posts/create"
+                    class="text-zinc-400 hover:text-zinc-300"
+                    ><Fa icon={faPlus} /></Link
+                >
+                <button
+                    use:inertia={{ href: "/logout", method: "post" }}
+                    class="text-zinc-400 hover:text-zinc-300"
                     ><Fa icon={faRightFromBracket} /></button
                 >
             {/if}
 
             {#if !$page.props.auth.user}
-                <Link href="/login"><Fa icon={faRightToBracket} /></Link>
+                <Link href="/login" class="text-zinc-400 hover:text-zinc-300"
+                    ><Fa icon={faRightToBracket} /></Link
+                >
             {/if}
         </div>
     </nav>
