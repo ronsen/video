@@ -27,7 +27,7 @@
 </svelte:head>
 
 <article>
-    <div bind:this={video} class="relative mb-3">
+    <div bind:this={video} class="relative mb-4">
         <img
             src={post.thumbnail_url}
             alt={post.title}

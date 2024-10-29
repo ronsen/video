@@ -42,7 +42,7 @@
             <button
                 type="submit"
                 disabled={$form.processing}
-                class="px-3 py-3 border border-zinc-500 bg-zinc-800 hover:bg-zinc-700 text-white/90 rounded-r-lg focus:outline-none"
+                class="px-3 py-3 border border-l-0 border-zinc-500 bg-zinc-800 hover:text-white text-white/90 rounded-r-lg focus:outline-none"
                 ><Fa icon={faMagnifyingGlass} /></button
             >
         </div>
@@ -60,7 +60,9 @@
 
             {#if $page.props.auth.user}
                 <div class="inline-flex gap-3">
-                    <Link href="/posts/{post.id}/edit" class="text-zinc-400 hover:text-zinc-300"
+                    <Link
+                        href="/posts/{post.id}/edit"
+                        class="text-zinc-400 hover:text-zinc-300"
                         ><Fa icon={faPencilAlt} /></Link
                     >
                     <Delete {post} />
