@@ -13,7 +13,7 @@
 
 <main class="container mx-auto md:w-[720px] my-6 px-6 md:my-12">
     <nav
-        class="flex justify-between items-center border-b border-primary pb-2 mb-8"
+        class="flex justify-between items-center border-b border-zinc-500 pb-2 mb-8"
     >
         <h1 class="font-bold uppercase">
             <Link href="/">{$page.props.appName}</Link>

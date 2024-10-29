@@ -29,7 +29,7 @@
                 type="email"
                 bind:value={$form.email}
                 placeholder="E-mail"
-                class="input input-bordered w-full"
+                class="p-2 border border-zinc-500 rounded-lg bg-zinc-900 text-white/90 w-full"
                 autofocus
             />
             {#if $form.errors.email}
@@ -43,7 +43,7 @@
                 type="password"
                 bind:value={$form.password}
                 placeholder="Password"
-                class="input input-bordered w-full"
+                class="p-2 border border-zinc-500 rounded-lg bg-zinc-900 text-white/90 w-full"
             />
             {#if $form.errors.password}
                 <div class="text-error text-sm font-bold mt-1">
@@ -53,13 +53,13 @@
         </div>
         <button
             type="submit"
-            class="btn btn-primary"
+            class="p-2 border border-zinc-500 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-sm text-white/90 w-full"
             disabled={$form.processing}>Log In</button
         >
     </form>
 </div>
 
-<div class="divider">Sign in or register</div>
+<div class="text-center text-sm">Sign in or register</div>
 
 <div class="flex justify-center py-3">
     <a href="/oauth"

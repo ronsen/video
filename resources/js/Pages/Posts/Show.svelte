@@ -10,7 +10,7 @@
     import {
         faPencilAlt,
         faPlayCircle,
-		faLink,
+        faLink,
     } from "@fortawesome/free-solid-svg-icons";
 
     export let post;
@@ -43,14 +43,14 @@
     </div>
 
     <div
-        class="flex justify-between items-center border-b border-base-300 pb-3 mb-3"
+        class="flex justify-between items-center border-b border-zinc-500 pb-3 mb-3"
     >
         <div class="title font-bold">{post.title}</div>
 
         {#if $page.props.auth.user}
             <div class="inline-flex items-center gap-3">
-				<a href="{post.url}" class="text-base-300" target="_blank"><Fa icon={faLink} /></a>
-                <Link href="/posts/{post.id}/edit" class="text-base-300"
+                <a href={post.url} target="_blank"><Fa icon={faLink} /></a>
+                <Link href="/posts/{post.id}/edit"
                     ><Fa icon={faPencilAlt} /></Link
                 >
                 <Delete {post} />

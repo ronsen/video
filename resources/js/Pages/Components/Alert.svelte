@@ -10,10 +10,9 @@
 </script>
 
 {#if show}
-    <div class="alert alert-warning shadow-lg mb-6">
-        <div class="inline-flex items-center gap-1">
+    <div class="flex justify-between items-center shadow-lg border border-zinc-500 p-4 rounded-lg mb-6">
+        <div class="inline-flex items-center gap-2">
             <Fa icon={faCircleInfo} />
-
             <slot />
         </div>
         <span></span>

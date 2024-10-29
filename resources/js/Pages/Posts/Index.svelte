@@ -32,17 +32,17 @@
 
 <div class="mb-6">
     <form on:submit|preventDefault={submit}>
-        <div class="join w-full">
+        <div class="inline-flex w-full">
             <input
                 type="search"
                 bind:value={$form.q}
-                class="input input-bordered w-full join-item"
+                class="p-2 border border-r-0 border-zinc-500 bg-zinc-900 rounded-l-lg text-white/90 w-full focus:outline-none"
                 required
             />
             <button
                 type="submit"
                 disabled={$form.processing}
-                class="btn btn-primary join-item"
+                class="px-3 py-3 border border-zinc-500 bg-zinc-900 text-white/90 rounded-r-lg focus:outline-none"
                 ><Fa icon={faMagnifyingGlass} /></button
             >
         </div>
@@ -54,7 +54,7 @@
 {:else}
     {#each posts.data as post}
         <div
-            class="flex justify-between items-center border-b border-base-300 pb-2 mb-2"
+            class="flex justify-between items-center border-b border-zinc-500 pb-2 mb-2"
         >
             <Link href="/v/{post.id}/{post.slug}">{post.title}</Link>
 
