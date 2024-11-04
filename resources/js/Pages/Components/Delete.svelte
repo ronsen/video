@@ -25,22 +25,26 @@
 
 <dialog
     bind:this={dialog}
-    class="bg-zinc-800 text-white/90 p-6 w-full md:w-3/4 shadow-lg rounded-lg"
+    class="border border-zinc-600 bg-zinc-900 text-white/90 w-full md:w-3/4 shadow rounded-lg backdrop:backdrop-blur"
 >
     <form on:submit|preventDefault={submit}>
-        <h3 class="font-bold">Delete this video?</h3>
-        <p class="py-4">{post.title}</p>
+        <div class="p-4">
+            <h3 class="font-bold mb-3">Delete this video?</h3>
+            <p>{post.title}</p>
+        </div>
 
-        <div class="inline-flex items-center gap-1">
-            <button
-                class="p-2 border border-zinc-500 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-sm text-white/90 w-full"
-                on:click|preventDefault={() => dialog.close()}>No</button
-            >
-            <button
-                type="submit"
-                class="p-2 border border-red-500 rounded-lg bg-red-800 hover:bg-red-700 text-sm text-white/90 w-full"
-                >Yes</button
-            >
+        <div class="p-4 bg-zinc-800">
+            <div class="flex justify-between gap-4">
+                <button
+                    class="p-2 border border-zinc-600 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-sm text-white/90"
+                    on:click|preventDefault={() => dialog.close()}>No</button
+                >
+                <button
+                    type="submit"
+                    class="p-2 border border-zinc-600 rounded-lg bg-white/90 hover:bg-white text-sm text-black/90"
+                    >Yes</button
+                >
+            </div>
         </div>
     </form>
 </dialog>

@@ -30,31 +30,31 @@
     <title>{$page.props.appName}</title>
 </svelte:head>
 
-<div class="mb-6">
+<section class="relative mb-6">
     <form on:submit|preventDefault={submit}>
         <div class="inline-flex w-full">
             <input
                 type="search"
                 bind:value={$form.q}
-                class="p-2 border border-r-0 border-zinc-500 bg-zinc-800 rounded-l-lg text-white/90 w-full focus:outline-none"
+                class="border border-zinc-600 bg-zinc-800 rounded-lg text-white/90 w-full"
                 required
             />
             <button
                 type="submit"
                 disabled={$form.processing}
-                class="px-3 py-3 border border-l-0 border-zinc-500 bg-zinc-800 hover:text-white text-white/90 rounded-r-lg focus:outline-none"
+                class="absolute p-3.5 top-0 right-0 text-sm text-white/90 hover:text-white"
                 ><Fa icon={faMagnifyingGlass} /></button
             >
         </div>
     </form>
-</div>
+</section>
 
 {#if posts.data.length == 0}
     <Alert>Empty.</Alert>
 {:else}
     {#each posts.data as post}
         <div
-            class="flex justify-between items-center border-b border-zinc-700 gap-3 pb-2 mb-2"
+            class="flex justify-between items-center border-b border-zinc-600 gap-3 pb-2 mb-2"
         >
             <Link href="/v/{post.id}/{post.slug}">{post.title}</Link>
 

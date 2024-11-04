@@ -29,7 +29,7 @@
             type="url"
             bind:value={$form.url}
             placeholder="URL"
-            class="p-2 border border-zinc-500 rounded-lg bg-zinc-900 text-white/90 w-full"
+            class="border border-zinc-600 rounded-lg bg-zinc-800 text-white/90 w-full"
             autofocus
         />
         {#if $form.errors.url}
@@ -43,7 +43,7 @@
             type="text"
             bind:value={$form.title}
             placeholder="Title"
-            class="p-2 border border-zinc-500 rounded-lg bg-zinc-900 text-white/90 w-full"
+            class="border border-zinc-600 rounded-lg bg-zinc-800 text-white/90 w-full"
         />
         {#if $form.errors.title}
             <div class="text-error font-bold text-sm mt-1">
@@ -55,12 +55,12 @@
         <textarea
             bind:value={$form.content}
             rows="5"
-            class="p-2 border border-zinc-500 rounded-lg bg-zinc-900 text-white/90 w-full"
+            class="border border-zinc-600 rounded-lg bg-zinc-800 text-white/90 w-full"
         />
     </div>
     <button
         type="submit"
-        class="p-2 border border-zinc-500 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-sm text-white/90 w-full"
+        class="p-2 border border-zinc-600 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-sm text-white/90 w-full"
         disabled={$form.processing}>Save</button
     >
 </form>
