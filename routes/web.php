@@ -27,5 +27,5 @@ Route::get('/oauth/callback', [\App\Http\Controllers\OAuthController::class, 'ca
 Route::middleware('auth')->group(function () {
 	Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 	Route::resource('/posts', \App\Http\Controllers\PostController::class)->except('show');
-	Route::get('/v/{id}/{slug}', [\App\Http\Controllers\PostController::class, 'show'])->name('videos.show');
+	Route::get('/{id}/{slug}', [\App\Http\Controllers\PostController::class, 'show'])->name('videos.show');
 });

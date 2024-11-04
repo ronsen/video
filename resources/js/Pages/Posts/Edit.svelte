@@ -55,7 +55,7 @@
         <textarea
             bind:value={$form.content}
             rows="5"
-            class="border border-zinc-600 rounded-lg bg-zinc-800 text-white/90 w-full"
+            class="border border-zinc-600 rounded-lg bg-zinc-800 text-white/90 w-full h-96"
         />
     </div>
     <button

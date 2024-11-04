@@ -56,7 +56,7 @@
         <div
             class="flex justify-between items-center border-b border-zinc-600 gap-3 pb-2 mb-2"
         >
-            <Link href="/v/{post.id}/{post.slug}">{post.title}</Link>
+            <Link href="/{post.id}/{post.slug}">{post.title}</Link>
 
             {#if $page.props.auth.user}
                 <div class="inline-flex gap-3">
