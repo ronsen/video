@@ -25,7 +25,7 @@
 
 <dialog
     bind:this={dialog}
-    class="border border-zinc-600 bg-zinc-900 text-white/90 w-full md:w-3/4 shadow rounded-lg backdrop:backdrop-blur"
+    class="border border-zinc-600 bg-zinc-900 text-white/90 w-full md:w-2/5 shadow rounded-lg backdrop:backdrop-blur"
 >
     <form on:submit|preventDefault={submit}>
         <div class="p-4">
