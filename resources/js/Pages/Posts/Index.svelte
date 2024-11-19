@@ -1,4 +1,4 @@
-<script context="module">
+<script module>
     export { default as layout } from "../Layouts/App.svelte";
 </script>
 
@@ -14,14 +14,14 @@
         faPencilAlt,
     } from "@fortawesome/free-solid-svg-icons";
 
-    export let posts;
-    export let q;
+	let { posts, q } = $props();
 
     let form = useForm({
         q,
     });
 
-    function submit() {
+    function submit(e) {
+		e.preventDefault();
         $form.get("/");
     }
 </script>
@@ -31,7 +31,7 @@
 </svelte:head>
 
 <section class="relative mb-6">
-    <form on:submit|preventDefault={submit}>
+    <form onsubmit={submit}>
         <div class="inline-flex w-full">
             <input
                 type="search"

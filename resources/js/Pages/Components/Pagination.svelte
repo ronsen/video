@@ -7,7 +7,7 @@
         faArrowRight,
     } from "@fortawesome/free-solid-svg-icons";
 
-    export let data;
+    let { data } = $props();
 </script>
 
 <div class="mt-6">

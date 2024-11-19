@@ -1,47 +1,47 @@
 <script>
-    import { useForm } from "@inertiajs/svelte";
+    import { router } from "@inertiajs/svelte";
 
     import Fa from "svelte-fa";
     import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
-    export let post;
+    let { post } = $props();
 
     let dialog;
-    let form = useForm();
 
-    function destroy() {
-        dialog.showModal();
+    function close(e) {
+        e.preventDefault();
+        dialog.close();
     }
 
-    function submit() {
-        $form.delete(`/posts/${post.id}`);
+    function submit(e) {
+        e.preventDefault();
+        router.delete(`/posts/${post.id}`);
         dialog.close();
     }
 </script>
 
-<button class="text-zinc-400 hover:text-zinc-300" on:click={() => destroy()}
+<button type="button" class="text-zinc-400" onclick={() => dialog.showModal()}
     ><Fa icon={faTrashAlt} /></button
 >
 
 <dialog
     bind:this={dialog}
-    class="border border-zinc-600 bg-zinc-900 text-white/90 w-full md:w-2/5 shadow rounded-lg backdrop:backdrop-blur"
+    class="w-full md:w-1/3 border border-zinc-100 dark:border-zinc-600 rounded-lg shadow dark:bg-zinc-900 dark:text-white/90 bg-zinc-50 backdrop:backdrop-blur"
 >
-    <form on:submit|preventDefault={submit}>
-        <div class="p-4">
-            <h3 class="font-bold mb-3">Delete this video?</h3>
-            <p>{post.title}</p>
+    <form onsubmit={submit}>
+        <div class="p-6">
+            <p>Delete this video?</p>
         </div>
 
-        <div class="p-4 bg-zinc-800">
+        <div class="flex justify-end gap-3 p-3 bg-zinc-100 dark:bg-zinc-800">
             <div class="flex justify-between gap-4">
                 <button
-                    class="p-2 border border-zinc-600 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-sm text-white/90"
-                    on:click|preventDefault={() => dialog.close()}>No</button
+                    class="p-2 border border-zinc-500 rounded-lg text-sm"
+                    onclick={close}>No</button
                 >
                 <button
                     type="submit"
-                    class="p-2 border border-zinc-600 rounded-lg bg-white/90 hover:bg-white text-sm text-black/90"
+                    class="p-2 border border-red-500 bg-red-500 rounded-lg text-sm"
                     >Yes</button
                 >
             </div>

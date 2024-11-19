@@ -9,13 +9,15 @@
         faRightToBracket,
     } from "@fortawesome/free-solid-svg-icons";
     import { faGithub } from "@fortawesome/free-brands-svg-icons";
+
+	let { children } = $props();
 </script>
 
 <main class="container mx-auto md:w-[720px] my-6 px-6 md:my-12">
     <nav
         class="flex justify-between items-center border-b border-zinc-500 pb-2 mb-8"
     >
-        <h1 class="font-bold uppercase">
+        <h1 class="font-bold">
             <Link href="/">{$page.props.appName}</Link>
         </h1>
 
@@ -45,7 +47,7 @@
         <Alert>{@html $page.props.flash.message}</Alert>
     {/if}
 
-    <slot />
+    {@render children()}
 </main>
 
 <footer class="absolute bottom-0 left-1/2 -translate-x-1/2 py-4">

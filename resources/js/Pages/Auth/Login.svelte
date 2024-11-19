@@ -1,4 +1,4 @@
-<script context="module">
+<script module>
     export { default as layout } from "../Layouts/App.svelte";
 </script>
 
@@ -10,7 +10,8 @@
         password: "",
     });
 
-    function submit() {
+    function submit(e) {
+        e.preventDefault();
         $form.post("/login", {
             onSubmit: () => $form.reset("password"),
         });
@@ -22,7 +23,7 @@
 </svelte:head>
 
 <div class="mb-6">
-    <form on:submit|preventDefault={submit}>
+    <form onsubmit={submit}>
         <div class="mb-3">
             <!-- svelte-ignore a11y-autofocus -->
             <input

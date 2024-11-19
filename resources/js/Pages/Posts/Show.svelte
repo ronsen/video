@@ -1,4 +1,4 @@
-<script context="module">
+<script module>
     export { default as layout } from "../Layouts/App.svelte";
 </script>
 
@@ -13,7 +13,7 @@
         faLink,
     } from "@fortawesome/free-solid-svg-icons";
 
-    export let post;
+    let { post } = $props();
 
     let video;
 
@@ -35,7 +35,7 @@
         />
 
         <button
-            on:click={play}
+            onclick={play}
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-red-500 hover:text-red-600"
         >
             <Fa icon={faPlayCircle} size="4x" />

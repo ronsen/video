@@ -1,11 +1,11 @@
-<script context="module">
+<script module>
     export { default as layout } from "../Layouts/App.svelte";
 </script>
 
 <script>
     import { useForm } from "@inertiajs/svelte";
 
-    export let post;
+    let { post } = $props();
 
     let form = useForm({
         url: post.url,
@@ -13,7 +13,8 @@
         content: post.content,
     });
 
-    function submit() {
+    function submit(e) {
+        e.preventDefault();
         $form.patch("/posts/" + post.id);
     }
 </script>
@@ -22,9 +23,9 @@
     <title>Edit Video</title>
 </svelte:head>
 
-<form on:submit|preventDefault={submit}>
+<form onsubmit={submit}>
     <div class="mb-3">
-        <!-- svelte-ignore a11y-autofocus -->
+        <!-- svelte-ignore a11y_autofocus -->
         <input
             type="url"
             bind:value={$form.url}
@@ -56,7 +57,7 @@
             bind:value={$form.content}
             rows="5"
             class="border border-zinc-600 rounded-lg bg-zinc-800 text-white/90 w-full h-96"
-        />
+        ></textarea>
     </div>
     <button
         type="submit"

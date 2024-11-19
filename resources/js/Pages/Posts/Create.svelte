@@ -1,4 +1,4 @@
-<script context="module">
+<script module>
     export { default as layout } from "../Layouts/App.svelte";
 </script>
 
@@ -12,7 +12,8 @@
         content: null,
     });
 
-    function submit() {
+    function submit(e) {
+        e.preventDefault();
         $form.post("/posts");
     }
 
@@ -37,7 +38,7 @@
     <title>Add New Video</title>
 </svelte:head>
 
-<form on:submit|preventDefault={submit}>
+<form on:submit={submit}>
     <div class="mb-3">
         <!-- svelte-ignore a11y-autofocus -->
         <input
@@ -72,7 +73,7 @@
             bind:value={$form.content}
             rows="5"
             class="border border-zinc-600 rounded-lg bg-zinc-800 text-white/90 w-full"
-        />
+        ></textarea>
     </div>
     <button
         type="submit"
