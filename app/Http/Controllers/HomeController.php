@@ -16,7 +16,7 @@ class HomeController extends Controller
 	{
 		$posts = Post::with('tags')
 			->when($request->q, function ($q) use ($request) {
-				return $q->where('title', 'LIKE', "%{$request->q}%");
+				$q->where('title', 'LIKE', "%{$request->q}%");
 			})
 			->where('user_id', Auth::user()->id)
 			->orderBy('id', 'desc')
