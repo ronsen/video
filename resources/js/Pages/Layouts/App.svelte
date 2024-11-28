@@ -17,9 +17,7 @@
     <nav
         class="flex justify-between items-center border-b border-zinc-300 pb-2 mb-8"
     >
-        <h1 class="font-bold">
-            <Link href="/">{$page.props.appName}</Link>
-        </h1>
+        <Link href="/"><img src="/icon-512.png" alt="Video" class="w-6 h-6"></Link>
 
         <div class="inline-flex gap-3">
             {#if $page.props.auth.user}
