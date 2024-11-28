@@ -10,10 +10,10 @@
     } from "@fortawesome/free-solid-svg-icons";
     import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
-	let { children } = $props();
+    let { children } = $props();
 </script>
 
-<main class="container mx-auto md:w-[720px] my-6 px-6 md:my-12">
+<main class="container mx-auto md:w-[720px] my-6 px-6 md:mb-24">
     <nav
         class="flex justify-between items-center border-b border-zinc-500 pb-2 mb-8"
     >
@@ -50,7 +50,9 @@
     {@render children()}
 </main>
 
-<footer class="absolute bottom-0 left-1/2 -translate-x-1/2 py-4">
+<footer
+    class="fixed bottom-0 left-1/2 -translate-x-1/2 py-4 bg-zinc-900/90 w-full flex justify-center"
+>
     <a href="https://github.com/ronsen/video" target="_blank"
         ><Fa icon={faGithub} /></a
     >
