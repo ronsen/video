@@ -11,6 +11,7 @@
         url: post.url,
         title: post.title,
         content: post.content,
+		tags: post.tags_as_csv,
     });
 
     function submit(e) {
@@ -58,6 +59,14 @@
             rows="5"
             class="border border-zinc-600 rounded-lg bg-zinc-800 text-white/90 w-full h-96"
         ></textarea>
+    </div>
+    <div class="mb-3">
+        <input
+            type="text"
+            bind:value={$form.tags}
+            placeholder="Tags (comma seperated)"
+            class="border border-zinc-600 rounded-lg bg-zinc-800 text-white/90 w-full"
+        />
     </div>
     <button
         type="submit"

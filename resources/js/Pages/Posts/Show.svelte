@@ -11,6 +11,7 @@
         faPencilAlt,
         faPlayCircle,
         faLink,
+        faTags,
     } from "@fortawesome/free-solid-svg-icons";
 
     let { post } = $props();
@@ -67,4 +68,14 @@
     <div class="content max-w-none mb-3">
         {@html post.content_to_html}
     </div>
+
+    {#if post.tags}
+        <div class="flex justify-center text-sm gap-4">
+            {#each post.tags as tag}
+                <div class="rounded-lg px-2 py-1 bg-zinc-800">
+					<a href="/tag/{tag.slug}">{tag.name}</a>
+				</div>
+            {/each}
+        </div>
+    {/if}
 </article>

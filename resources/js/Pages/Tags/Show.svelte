@@ -3,25 +3,24 @@
 </script>
 
 <script>
-    import { page, Link, useForm } from "@inertiajs/svelte";
+    import { page, Link } from "@inertiajs/svelte";
     import Alert from "../Components/Alert.svelte";
-    import Delete from "../Components/Delete.svelte";
     import Pagination from "../Components/Pagination.svelte";
-    import Search from "../Components/Search.svelte";
+    import Delete from "../Components/Delete.svelte";
 
     import Fa from "svelte-fa";
     import { faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 
-    let { posts, q } = $props();
+    let { posts, slug } = $props();
 </script>
 
 <svelte:head>
-    <title>{$page.props.appName}</title>
+    <title>{slug}</title>
 </svelte:head>
 
-<section class="mb-6">
-	<Search {q} />
-</section>
+<h3 class="font-bold mb-6 border-b border-zinc-600 gap-3 pb-2">
+    <a href="/tag/{slug}">{slug}</a>
+</h3>
 
 {#if posts.data.length == 0}
     <Alert>Empty.</Alert>
@@ -30,7 +29,7 @@
         <div
             class="flex justify-between items-center border-b border-zinc-600 gap-3 pb-2 mb-2"
         >
-            <Link href="/v/{post.id}/{post.slug}">{post.title}</Link>
+            <Link href="/{post.id}/{post.slug}">{post.title}</Link>
 
             {#if $page.props.auth.user}
                 <div class="inline-flex gap-3">

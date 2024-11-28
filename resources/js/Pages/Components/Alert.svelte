@@ -7,7 +7,7 @@
     let show = $state(true);
 
     function close(e) {
-		e.prventDefault();
+		e.preventDefault();
         show = !show;
     }
 </script>

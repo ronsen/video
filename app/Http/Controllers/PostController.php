@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Session;
 use Inertia\Inertia;
 use Inertia\Response;
 use App\Models\Post;
+use App\Models\Tag;
 
 class PostController extends Controller
 {
@@ -31,6 +32,10 @@ class PostController extends Controller
 			'title' => $request->input('title'),
 			'content' => $request->input('content'),
 		]);
+
+		if ($request->input('tags')) {
+			$post->tags()->sync(Tag::getTagIds(explode(',', $request->input('tags'))));
+		}
 
 		return to_route('videos.show', [$post->id, $post->slug]);
 	}
@@ -56,12 +61,16 @@ class PostController extends Controller
 		$post->content = $request->input('content');
 		$post->update();
 
+		if ($request->input('tags')) {
+			$post->tags()->sync(Tag::getTagIds(explode(',', $request->input('tags'))));
+		}
+
 		return back()->with('message', "<strong>{$post->title}</strong> has been updated.");
 	}
 
 	public function show(int $id, string $slug): Response|RedirectResponse
 	{
-		$post = Post::findOrFail($id);
+		$post = Post::with('tags')->findOrFail($id);
 
 		Gate::authorize('show', $post);
 
