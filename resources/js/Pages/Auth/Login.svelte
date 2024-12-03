@@ -4,6 +4,7 @@
 
 <script>
     import { useForm } from "@inertiajs/svelte";
+    import Divider from "../Components/Divider.svelte";
 
     let form = useForm({
         email: "",
@@ -60,10 +61,10 @@
     </form>
 </div>
 
-<div class="text-center text-sm">Sign in or register</div>
+<Divider text='Sign in or register' />
 
-<div class="flex justify-center py-3">
+<div class="flex justify-center">
     <a href="/oauth"
-        ><img src="./google-signin.png" alt="[]" class="w-full md:w-56" /></a
+        ><img src="./google-signin.png" alt="[]" class="w-full sm:w-56" /></a
     >
 </div>
