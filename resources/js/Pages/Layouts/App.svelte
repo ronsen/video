@@ -13,7 +13,7 @@
     let { children } = $props();
 </script>
 
-<main class="container mx-auto md:w-[720px] my-6 px-6 md:mb-24">
+<main class="container mx-auto md:max-w-2xl my-6 px-6 md:mb-24">
     <nav
         class="flex justify-between items-center border-b border-zinc-300 pb-2 mb-8"
     >
