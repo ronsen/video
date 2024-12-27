@@ -25,7 +25,7 @@ class TagController extends Controller
 				$q->where('tag_id', $tag->id);
 			})
 			->where('user_id', Auth::user()->id)
-			->orderBy('name', 'asc')
+			->orderBy('id', 'desc')
 			->simplePaginate(self::PER_PAGE);
 
 		return Inertia::render('Tags/Show', [
