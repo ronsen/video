@@ -19,18 +19,17 @@
 <div class="relative">
     <form onsubmit={submit}>
         <div class="inline-flex w-full">
+            <div
+                class="absolute px-3 p-2.5 top-0 left-0 text-sm text-white/90 hover:text-white"
+            >
+                <Fa icon={faMagnifyingGlass} />
+            </div>
             <input
                 type="search"
                 bind:value={$form.q}
-                class="border border-zinc-600 bg-zinc-800 rounded-lg text-white/90 w-full"
+                class="px-8 py-1 border border-zinc-600 bg-zinc-800 rounded-full text-white/90 w-full"
                 required
             />
-            <button
-                type="submit"
-                disabled={$form.processing}
-                class="absolute p-3.5 top-0 right-0 text-sm text-white/90 hover:text-white"
-                ><Fa icon={faMagnifyingGlass} /></button
-            >
         </div>
     </form>
 </div>

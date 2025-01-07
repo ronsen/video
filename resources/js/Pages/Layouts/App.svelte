@@ -1,6 +1,7 @@
 <script>
     import { page, Link, inertia } from "@inertiajs/svelte";
     import Alert from "../Components/Alert.svelte";
+    import Search from "../Components/Search.svelte";
 
     import Fa from "svelte-fa";
     import {
@@ -10,15 +11,23 @@
     } from "@fortawesome/free-solid-svg-icons";
     import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
-    let { children } = $props();
+    let { children, q } = $props();
 </script>
 
-<main class="container mx-auto md:max-w-2xl my-6 px-6 md:mb-24">
-    <nav
-        class="flex justify-between items-center border-b border-zinc-300 pb-2 mb-8"
-    >
-        <Link href="/"><img src="/icon-512.png" alt="Video" class="w-6 h-6"></Link>
+<nav
+    class="flex justify-between items-center border-b border-zinc-600 p-2 md:px-4 bg-zinc-800"
+>
+    <div class="flex-1">
+        <Link href="/"
+            ><img src="/icon-512.png" alt="Video" class="w-6 h-6" /></Link
+        >
+    </div>
 
+    <div class="flex-1">
+        <Search {q} />
+    </div>
+
+    <div class="flex-1 text-end">
         <div class="inline-flex gap-3">
             {#if $page.props.auth.user}
                 <Link
@@ -39,8 +48,10 @@
                 >
             {/if}
         </div>
-    </nav>
+    </div>
+</nav>
 
+<main class="container mx-auto md:max-w-2xl my-4 px-6 md:mb-16">
     {#if $page.props.flash.message}
         <Alert>{@html $page.props.flash.message}</Alert>
     {/if}
