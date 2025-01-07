@@ -35,7 +35,7 @@
                 autofocus
             />
             {#if $form.errors.email}
-                <div class="text-red-500 text-sm mt-1">
+                <div class="text-red-500 text-xs mt-1">
                     {$form.errors.email}
                 </div>
             {/if}
@@ -48,7 +48,7 @@
                 class="border border-zinc-600 rounded-lg bg-zinc-800 text-white/90 w-full"
             />
             {#if $form.errors.password}
-                <div class="text-red-500 text-sm mt-1">
+                <div class="text-red-500 text-xs mt-1">
                     {$form.errors.password}
                 </div>
             {/if}

@@ -56,8 +56,7 @@
     <div class="mb-3">
         <textarea
             bind:value={$form.content}
-            rows="5"
-            class="border border-zinc-600 rounded-lg bg-zinc-800 text-white/90 w-full h-96"
+            class="border border-zinc-600 rounded-lg bg-zinc-800 text-white/90 w-full h-40"
         ></textarea>
     </div>
     <div class="mb-3">

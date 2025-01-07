@@ -51,7 +51,7 @@
             autofocus
         />
         {#if $form.errors.url}
-            <div class="text-error text-sm mt-1">
+            <div class="text-red-500 text-xs mt-1">
                 {$form.errors.url}
             </div>
         {/if}
@@ -64,7 +64,7 @@
             class="border border-zinc-600 rounded-lg bg-zinc-800 text-white/90 w-full"
         />
         {#if $form.errors.title}
-            <div class="text-error text-sm mt-1">
+            <div class="text-red-500 text-xs mt-1">
                 {$form.errors.title}
             </div>
         {/if}
@@ -72,8 +72,7 @@
     <div class="mb-3">
         <textarea
             bind:value={$form.content}
-            rows="5"
-            class="border border-zinc-600 rounded-lg bg-zinc-800 text-white/90 w-full"
+            class="border border-zinc-600 rounded-lg bg-zinc-800 text-white/90 w-full h-40"
         ></textarea>
     </div>
     <div class="mb-3">
