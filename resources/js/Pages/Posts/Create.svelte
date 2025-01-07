@@ -10,7 +10,7 @@
         source: null,
         title: null,
         content: null,
-		tags: null,
+        tags: null,
     });
 
     function submit(e) {
@@ -86,7 +86,7 @@
     </div>
     <button
         type="submit"
-        class="p-2 border border-zinc-600 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-sm text-white/90 w-full"
+        class="p-2 font-semibold border border-zinc-200 rounded-full bg-zinc-200 hover:bg-zinc-100 text-sm text-black/90 w-full"
         disabled={$form.processing}>Save</button
     >
 </form>

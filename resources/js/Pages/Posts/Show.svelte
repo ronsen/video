@@ -11,7 +11,7 @@
         faPencilAlt,
         faPlayCircle,
         faLink,
-        faTags,
+		faArrowUpRightFromSquare,
     } from "@fortawesome/free-solid-svg-icons";
 
     let { post } = $props();
@@ -53,7 +53,7 @@
                 <a
                     href={post.url}
                     class="text-zinc-400 hover:text-zinc-300"
-                    target="_blank"><Fa icon={faLink} /></a
+                    target="_blank"><Fa icon={faArrowUpRightFromSquare} /></a
                 >
                 <Link
                     href="/posts/{post.id}/edit"
