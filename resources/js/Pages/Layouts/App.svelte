@@ -5,7 +5,7 @@
 
     import Fa from "svelte-fa";
     import {
-        faPlus,
+        faPlusCircle,
         faRightFromBracket,
         faRightToBracket,
     } from "@fortawesome/free-solid-svg-icons";
@@ -15,7 +15,7 @@
 </script>
 
 <nav
-    class="flex justify-between items-center border-b border-zinc-600 p-2 md:px-4 bg-zinc-800"
+    class="flex justify-between items-center border-b border-zinc-600 px-6 py-2 bg-zinc-800"
 >
     <div class="flex-1">
         <Link href="/"
@@ -33,7 +33,7 @@
                 <Link
                     href="/posts/create"
                     class="text-zinc-400 hover:text-zinc-300"
-                    ><Fa icon={faPlus} /></Link
+                    ><Fa icon={faPlusCircle} /></Link
                 >
                 <button
                     use:inertia={{ href: "/logout", method: "post" }}
@@ -51,7 +51,7 @@
     </div>
 </nav>
 
-<main class="container mx-auto my-4 px-6 md:mb-16">
+<main class="container mx-auto my-4 px-6 mb-16">
     {#if $page.props.flash.message}
         <Alert>{@html $page.props.flash.message}</Alert>
     {/if}
