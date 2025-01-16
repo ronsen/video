@@ -6,6 +6,8 @@
     import { useForm } from "@inertiajs/svelte";
     import Divider from "../Components/Divider.svelte";
 
+	let { title } = $props();
+
     let form = useForm({
         email: "",
         password: "",
@@ -20,7 +22,7 @@
 </script>
 
 <svelte:head>
-    <title>Log In</title>
+    <title>{title}</title>
 </svelte:head>
 
 <div class="container md:w-[400px] mx-auto p-4">

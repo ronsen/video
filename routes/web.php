@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Route::get('/login', [\App\Http\Controllers\LoginController::class, 'create'])
 	->middleware('guest')
 	->name('login');
@@ -25,7 +27,6 @@ Route::get('/oauth', [\App\Http\Controllers\OAuthController::class, 'index'])->n
 Route::get('/oauth/callback', [\App\Http\Controllers\OAuthController::class, 'callback'])->name('oauth.callback');
 
 Route::middleware('auth')->group(function () {
-	Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 	Route::resource('/posts', \App\Http\Controllers\PostController::class)->except('show');
 	Route::get('/v/{id}/{slug}', [\App\Http\Controllers\PostController::class, 'show'])->name('videos.show');
 	Route::get('/tag/{slug}', [\App\Http\Controllers\TagController::class, 'show'])->name('tags.show');

@@ -10,22 +10,28 @@ use App\Models\Post;
 
 class HomeController extends Controller
 {
-	const PER_PAGE = 10;
+	const PER_PAGE = 9;
 
 	public function index(Request $request): Response
 	{
-		$posts = Post::with('tags')
-			->when($request->q, function ($q) use ($request) {
-				$q->where('title', 'LIKE', "%{$request->q}%");
-			})
-			->where('user_id', Auth::user()->id)
-			->orderBy('id', 'desc')
-			->simplePaginate(self::PER_PAGE)
-			->withQueryString();
+		if (Auth::check()) {
+			$posts = Post::with('tags')
+				->when($request->q, function ($q) use ($request) {
+					$q->where('title', 'LIKE', "%{$request->q}%");
+				})
+				->where('user_id', Auth::user()->id)
+				->orderBy('id', 'desc')
+				->simplePaginate(self::PER_PAGE)
+				->withQueryString();
 
-		return Inertia::render('Posts/Index', [
-			'q' => $request->q,
-			'posts' => $posts,
-		]);
+			return Inertia::render('Posts/Index', [
+				'q' => $request->q,
+				'posts' => $posts,
+			]);
+		} else {
+			return Inertia::render('Auth/Login', [
+				'title' => 'Video',
+			]);
+		}
 	}
 }

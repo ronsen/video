@@ -12,4 +12,5 @@
 <svelte:head>
     <title>{$page.props.appName}</title>
 </svelte:head>
+
 <Posts {posts} />

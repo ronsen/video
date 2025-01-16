@@ -9,7 +9,7 @@
 {#if posts.data.length == 0}
     <Alert>Empty.</Alert>
 {:else}
-    <div class="grid md:grid-cols-2 gap-4">
+    <div class="grid md:grid-cols-3 gap-4">
         {#each posts.data as post}
             <div>
                 <Link href="/v/{post.id}/{post.slug}"

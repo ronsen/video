@@ -34,6 +34,7 @@
             class="border border-zinc-600 rounded-lg bg-zinc-800 text-white/90 w-full"
             autofocus
         />
+		<div class="mt-1 text-xs text-gray-400">Only supports YouTube</div>
         {#if $form.errors.url}
             <div class="text-error text-sm font-bold mt-1">
                 {$form.errors.url}

@@ -20,7 +20,7 @@
             >
         {:else}
             <button
-                class="px-3 py-2 border border-zinc-700 rounded-lg bg-zinc-800 text-sm text-white/70 cursor-default"
+                class="px-3 py-2 border border-zinc-700 rounded-lg bg-zinc-800 text-sm text-white/20 cursor-default"
                 ><Fa icon={faArrowLeft} /></button
             >
         {/if}
@@ -33,7 +33,7 @@
             >
         {:else}
             <button
-                class="px-3 py-2 border border-zinc-700 rounded-lg bg-zinc-800 text-sm text-white/70 cursor-default"
+                class="px-3 py-2 border border-zinc-700 rounded-lg bg-zinc-800 text-sm text-white/20 cursor-default"
                 ><Fa icon={faArrowRight} /></button
             >
         {/if}
