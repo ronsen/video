@@ -3,7 +3,7 @@
 </script>
 
 <div class="my-4 flex items-center text-sm">
-    <div class="flex-grow border-t border-zinc-700"></div>
+    <div class="grow border-t border-zinc-700"></div>
     <span class="mx-4 text-white/90">{text}</span>
-    <div class="flex-grow border-t border-zinc-700"></div>
+    <div class="grow border-t border-zinc-700"></div>
 </div>

@@ -20,13 +20,15 @@
     }
 </script>
 
-<button type="button" class="text-zinc-400" onclick={() => dialog.showModal()}
-    ><Fa icon={faTrashAlt} /></button
+<button
+    type="button"
+    class="text-zinc-400 cursor-pointer"
+    onclick={() => dialog.showModal()}><Fa icon={faTrashAlt} /></button
 >
 
 <dialog
     bind:this={dialog}
-    class="w-full md:w-1/3 border border-zinc-100 dark:border-zinc-600 rounded-lg shadow dark:bg-zinc-900 dark:text-white/90 bg-zinc-50 backdrop:backdrop-blur"
+    class="w-full m-auto md:w-1/3 border border-zinc-100 dark:border-zinc-600 rounded-lg shadow-sm dark:bg-zinc-900 dark:text-white/90 bg-zinc-50 backdrop:backdrop-blur-sm"
 >
     <form onsubmit={submit}>
         <div class="p-6">
