@@ -57,14 +57,14 @@ class Post extends Model
 	public function videoHtml(): Attribute
 	{
 		return new Attribute(
-			get: fn() => YoutubeUtil::parse($this->url)
+			get: fn() => YoutubeUtil::parse((string) $this->url)
 		);
 	}
 
 	public function thumbnailUrl(): Attribute
 	{
 		return new Attribute(
-			get: fn() => YoutubeUtil::getThumbnailURL($this->url, 'high')
+			get: fn() => YoutubeUtil::getThumbnailURL((string) $this->url, 'high')
 		);
 	}
 

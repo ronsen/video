@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @source '../';
+@source '../../app/Utils/YoutubeUtil.php';
 
 @plugin '@tailwindcss/forms';
 
