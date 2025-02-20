@@ -64,7 +64,7 @@ class Post extends Model
 	public function thumbnailUrl(): Attribute
 	{
 		return new Attribute(
-			get: fn() => YoutubeUtil::getThumbnailURL((string) $this->url, 'high')
+			get: fn() => YoutubeUtil::getThumbnailURL((string) $this->url)
 		);
 	}
 
