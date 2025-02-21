@@ -8,13 +8,14 @@
     import Fa from "svelte-fa";
     import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 
-    let { post } = $props();
+    let { post, categories } = $props();
 
     let form = useForm({
         url: post.url,
         title: post.title,
         content: post.content,
-		private: post.private,
+        private: post.private,
+        category: post.category,
     });
 
     function submit(e) {
@@ -60,6 +61,16 @@
                     {$form.errors.title}
                 </div>
             {/if}
+        </div>
+        <div class="mb-3">
+            <select
+                bind:value={$form.category}
+                class="border border-zinc-600 rounded-lg bg-zinc-800 text-white/90 w-full"
+            >
+                {#each categories as category}
+                    <option value={category.id}>{category.name}</option>
+                {/each}
+            </select>
         </div>
         <div class="mb-3">
             <textarea

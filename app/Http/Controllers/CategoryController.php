@@ -23,7 +23,7 @@ class CategoryController extends Controller
 			abort(404);
 		}
 
-		$posts = Post::with('categories')
+		$posts = Post::with('categories', 'user')
 			->whereHas('categories', function (Builder $q) use ($category) {
 				$q->where('category_id', $category->id);
 			})

@@ -17,4 +17,4 @@
     <Link href="/category/{category.slug}">{category.name}</Link>
 </h3>
 
-<Posts {posts} />
+<Posts {posts} showUser={true} />

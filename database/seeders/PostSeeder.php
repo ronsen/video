@@ -14,11 +14,6 @@ class PostSeeder extends Seeder
      */
     public function run(): void
     {
-        $posts = Post::factory(100)->create();
-
-		foreach ($posts as $post) {
-			$categories = Category::inRandomOrder()->limit(rand(2, 3))->get()->pluck('id');
-			$post->categories()->attach($categories);
-		}
+        Post::factory(100)->create();
     }
 }

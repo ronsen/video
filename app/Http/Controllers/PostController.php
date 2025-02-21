@@ -5,17 +5,25 @@ namespace App\Http\Controllers;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
 use Inertia\Inertia;
 use Inertia\Response;
+use App\Models\Category;
 use App\Models\Post;
 
 class PostController extends Controller
 {
 	public function create(): Response
 	{
-		return Inertia::render('Posts/Create');
+		$categories = Cache::rememberForever('categories', function () {
+			return Category::orderBy('name', 'asc')->get();
+		});
+		
+		return Inertia::render('Posts/Create', [
+			'categories' => $categories,
+		]);
 	}
 
 	public function store(Request $request): RedirectResponse
@@ -33,6 +41,8 @@ class PostController extends Controller
 			'private' => $request->boolean('private'),
 		]);
 
+		$post->categories()->attach($request->input('category'));
+
 		return to_route('videos.show', [$post->id, $post->slug]);
 	}
 
@@ -40,7 +50,14 @@ class PostController extends Controller
 	{
 		Gate::authorize('update', $post);
 
-		return Inertia::render('Posts/Edit', ['post' => $post]);
+		$categories = Cache::rememberForever('categories', function () {
+			return Category::orderBy('name', 'asc')->get();
+		});
+
+		return Inertia::render('Posts/Edit', [
+			'post' => $post,
+			'categories' => $categories,
+		]);
 	}
 
 	public function update(Post $post, Request $request): RedirectResponse
@@ -57,6 +74,8 @@ class PostController extends Controller
 		$post->content = $request->input('content');
 		$post->private = $request->boolean('private');
 		$post->update();
+
+		$post->categories()->sync($request->input('category'));
 
 		return back()->with('message', "<strong>{$post->title}</strong> has been updated.");
 	}

@@ -30,6 +30,7 @@ class Post extends Model
 		'content_to_html',
 		'video_html',
 		'thumbnail_url',
+		'category',
 	];
 
 	public function user(): BelongsTo
@@ -45,6 +46,13 @@ class Post extends Model
 	public function scopeIsPublic(Builder $query): void
 	{
 		$query->where('private', false);
+	}
+
+	public function category(): Attribute
+	{
+		return new Attribute(
+			get: fn() => $this->categories->count() == 0 ? 0 : $this->categories->first()->id,
+		);
 	}
 
 	public function slug(): Attribute

@@ -8,6 +8,8 @@
     import Fa from "svelte-fa";
     import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 
+    let { categories } = $props();
+
     let form = useForm({
         url: null,
         source: null,
@@ -43,13 +45,13 @@
 </svelte:head>
 
 <div class="md:max-w-2xl md:mx-auto">
-    <form on:submit={submit}>
+    <form onsubmit={submit}>
         <div class="mb-3">
-            <!-- svelte-ignore a11y-autofocus -->
+            <!-- svelte-ignore a11y_autofocus -->
             <input
                 type="url"
                 bind:value={$form.url}
-                on:change={fetchTitle}
+                onchange={fetchTitle}
                 placeholder="URL"
                 class="border border-zinc-600 rounded-lg bg-zinc-800 text-white/90 w-full"
                 autofocus
@@ -76,6 +78,13 @@
                     {$form.errors.title}
                 </div>
             {/if}
+        </div>
+        <div class="mb-3">
+            <select class="border border-zinc-600 rounded-lg bg-zinc-800 text-white/90 w-full">
+                {#each categories as category}
+                    <option value="{category.id}">{category.name}</option>
+                {/each}
+            </select>
         </div>
         <div class="mb-3">
             <textarea
