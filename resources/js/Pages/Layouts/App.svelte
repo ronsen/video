@@ -8,6 +8,7 @@
         faPlusCircle,
         faRightFromBracket,
         faRightToBracket,
+        faUser,
     } from "@fortawesome/free-solid-svg-icons";
     import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
@@ -34,6 +35,12 @@
                     href="/posts/create"
                     class="text-zinc-400 hover:text-zinc-300"
                     ><Fa icon={faPlusCircle} /></Link
+                >
+                <Link
+                    href="/user/{$page.props.auth.user.id}/{$page.props.auth
+                        .user.slug}"
+                    class="text-zinc-400 hover:text-zinc-300"
+                    ><Fa icon={faUser} /></Link
                 >
                 <button
                     use:inertia={{ href: "/logout", method: "post" }}

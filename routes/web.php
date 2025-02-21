@@ -15,19 +15,25 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/login', [\App\Http\Controllers\LoginController::class, 'create'])
+Route::get('/login', [\App\Http\Controllers\Auth\LoginController::class, 'create'])
 	->middleware('guest')
 	->name('login');
-Route::post('/login', [\App\Http\Controllers\LoginController::class, 'store']);
-Route::post('/logout', [\App\Http\Controllers\LoginController::class, 'destroy'])
+Route::post('/login', [\App\Http\Controllers\Auth\LoginController::class, 'store']);
+Route::post('/logout', [\App\Http\Controllers\Auth\LoginController::class, 'destroy'])
 	->middleware('auth')
 	->name('logout');
 
-Route::get('/oauth', [\App\Http\Controllers\OAuthController::class, 'index'])->name('oauth.index');
-Route::get('/oauth/callback', [\App\Http\Controllers\OAuthController::class, 'callback'])->name('oauth.callback');
+Route::get('/oauth', [\App\Http\Controllers\Auth\OAuthController::class, 'index'])
+	->name('oauth.index');
+Route::get('/oauth/callback', [\App\Http\Controllers\Auth\OAuthController::class, 'callback'])
+	->name('oauth.callback');
+
+Route::get('/v/{id}/{slug}', [\App\Http\Controllers\PostController::class, 'show'])
+	->name('videos.show');
+
+Route::get('/user/{id}/{slug}', [\App\Http\Controllers\UserController::class, 'show'])
+	->name('users.show');
 
 Route::middleware('auth')->group(function () {
 	Route::resource('/posts', \App\Http\Controllers\PostController::class)->except('show');
-	Route::get('/v/{id}/{slug}', [\App\Http\Controllers\PostController::class, 'show'])->name('videos.show');
-	Route::get('/tag/{slug}', [\App\Http\Controllers\TagController::class, 'show'])->name('tags.show');
 });

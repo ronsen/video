@@ -39,7 +39,7 @@ class HandleInertiaRequests extends Middleware
 			'appName' => config('app.name'),
 			'csrfToken' => csrf_token(),
 			'auth.user' => fn() => $request->user()
-				? $request->user()->only('id', 'name', 'email')
+				? $request->user()->only('id', 'name', 'email', 'slug')
 				: null,
 			'flash' => [
 				'message' => fn() => $request->session()->get('message')

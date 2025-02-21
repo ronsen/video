@@ -18,6 +18,8 @@ return new class extends Migration
 			$table->string('url');
 			$table->string('title');
 			$table->longText('content')->nullable();
+			$table->boolean('private')->default(false);
+			$table->unsignedBigInteger('watched')->default(0);
 			$table->softDeletes();
 			$table->timestamps();
 		});

@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Session;
 use Inertia\Inertia;
 use Inertia\Response;
 use App\Models\Post;
-use App\Models\Tag;
 
 class PostController extends Controller
 {
@@ -31,11 +30,8 @@ class PostController extends Controller
 			'url' => $request->input('url'),
 			'title' => $request->input('title'),
 			'content' => $request->input('content'),
+			'private' => $request->boolean('private'),
 		]);
-
-		if ($request->input('tags')) {
-			$post->tags()->sync(Tag::getTagIds(explode(',', $request->input('tags'))));
-		}
 
 		return to_route('videos.show', [$post->id, $post->slug]);
 	}
@@ -59,26 +55,30 @@ class PostController extends Controller
 		$post->url = $request->input('url');
 		$post->title = $request->input('title');
 		$post->content = $request->input('content');
+		$post->private = $request->boolean('private');
 		$post->update();
-
-		if ($request->input('tags')) {
-			$post->tags()->sync(Tag::getTagIds(explode(',', $request->input('tags'))));
-		}
 
 		return back()->with('message', "<strong>{$post->title}</strong> has been updated.");
 	}
 
 	public function show(int $id, string $slug): Response|RedirectResponse
 	{
-		$post = Post::with('tags')->findOrFail($id);
+		$post = Post::with('categories', 'user')->findOrFail($id);
 
-		Gate::authorize('show', $post);
+		if ($post->private) {
+			Gate::authorize('show', $post);
+		}
 
 		if ($post->slug != $slug) {
 			return redirect()->route('videos.show', [$post->id, $post->slug]);
 		}
 
-		return Inertia::render('Posts/Show', ['post' => $post]);
+		$post->increment('watched');
+
+		return Inertia::render('Posts/Show', [
+			'post' => $post,
+			'owner' => Auth::check() ? Auth::user()->id == $post->user->id : false,
+		]);
 	}
 
 	public function destroy(Post $post): RedirectResponse

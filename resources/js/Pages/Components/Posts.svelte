@@ -3,7 +3,10 @@
     import Alert from "../Components/Alert.svelte";
     import Pagination from "../Components/Pagination.svelte";
 
-    let { posts } = $props();
+    import Fa from "svelte-fa";
+    import { faLock } from "@fortawesome/free-solid-svg-icons";
+
+    let { posts, showUser } = $props();
 </script>
 
 {#if posts.data.length == 0}
@@ -20,7 +23,22 @@
                     />
                 </Link>
                 <div class="mt-1">
-                    <Link href="/v/{post.id}/{post.slug}">{post.title}</Link>
+                    <div
+                        class="flex justify-start items-center gap-1 font-bold"
+                    >
+                        {#if post.private}
+                            <Fa icon={faLock} />
+                        {/if}
+                        <Link href="/v/{post.id}/{post.slug}">{post.title}</Link
+                        >
+                    </div>
+                    {#if showUser}
+                        <div class="text-sm">
+                            <Link href="/user/{post.user.id}/{post.user.slug}"
+                                >{post.user.name}</Link
+                            >
+                        </div>
+                    {/if}
                 </div>
             </div>
         {/each}

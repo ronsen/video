@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -20,6 +21,8 @@ class Post extends Model
 		'url',
 		'title',
 		'content',
+		'private',
+		'watched',
 	];
 
 	protected $appends = [
@@ -27,7 +30,6 @@ class Post extends Model
 		'content_to_html',
 		'video_html',
 		'thumbnail_url',
-		'tags_as_csv',
 	];
 
 	public function user(): BelongsTo
@@ -35,9 +37,14 @@ class Post extends Model
 		return $this->belongsTo(User::class);
 	}
 
-	public function tags(): BelongsToMany
+	public function categories(): BelongsToMany
 	{
-		return $this->belongsToMany(Tag::class)->withTimestamps();
+		return $this->belongsToMany(Category::class)->withTimestamps();
+	}
+
+	public function scopeIsPublic(Builder $query): void
+	{
+		$query->where('private', false);
 	}
 
 	public function slug(): Attribute
@@ -65,13 +72,6 @@ class Post extends Model
 	{
 		return new Attribute(
 			get: fn() => YoutubeUtil::getThumbnailURL((string) $this->url)
-		);
-	}
-
-	public function tagsAsCsv(): Attribute
-	{
-		return new Attribute(
-			get: fn() => $this->tags->pluck('name')->implode(', ')
 		);
 	}
 }

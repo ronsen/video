@@ -13,7 +13,7 @@
         source: null,
         title: null,
         content: null,
-        tags: null,
+        private: false,
     });
 
     function submit(e) {
@@ -56,7 +56,7 @@
             />
             <div class="mt-1 text-xs text-gray-400 flex items-center gap-1">
                 <Fa icon={faInfoCircle} />
-				<span>Only supports YouTube</span>
+                <span>Only supports YouTube</span>
             </div>
             {#if $form.errors.url}
                 <div class="text-red-500 text-xs mt-1">
@@ -84,12 +84,13 @@
             ></textarea>
         </div>
         <div class="mb-3">
-            <input
-                type="text"
-                bind:value={$form.tags}
-                placeholder="Tags (comma seperated)"
-                class="border border-zinc-600 rounded-lg bg-zinc-800 text-white/90 w-full"
-            />
+            <label class="flex justify-start items-center gap-2">
+                <input
+                    type="checkbox"
+                    bind:checked={$form.private}
+                    class="border border-zinc-600 rounded bg-zinc-800 text-white/90"
+                />Private
+            </label>
         </div>
         <button
             type="submit"

@@ -10,11 +10,11 @@
     import {
         faPencilAlt,
         faPlayCircle,
-        faLink,
-		faArrowUpRightFromSquare,
+        faArrowUpRightFromSquare,
+        faLock,
     } from "@fortawesome/free-solid-svg-icons";
 
-    let { post } = $props();
+    let { post, owner } = $props();
 
     let video;
 
@@ -46,22 +46,39 @@
     <div
         class="flex justify-between items-center border-b border-zinc-500 pb-3 mb-3"
     >
-        <div class="title font-bold">{post.title}</div>
+        <div>
+            <div
+                class="flex justify-start items-center gap-1 text-lg font-bold"
+            >
+                {#if post.private}
+                    <Fa icon={faLock} />
+                {/if}
+                <div>{post.title}</div>
+            </div>
+            <div class="text-sm">
+                <Link href="/user/{post.user.id}/{post.user.slug}"
+                    >{post.user.name}</Link
+                >
+            </div>
+        </div>
 
         {#if $page.props.auth.user}
-            <div class="inline-flex items-center gap-3">
-                <a
-                    href={post.url}
-                    class="text-zinc-400 hover:text-zinc-300"
-                    target="_blank"><Fa icon={faArrowUpRightFromSquare} /></a
-                >
-                <Link
-                    href="/posts/{post.id}/edit"
-                    class="text-zinc-400 hover:text-zinc-300"
-                    ><Fa icon={faPencilAlt} /></Link
-                >
-                <Delete {post} />
-            </div>
+            {#if owner}
+                <div class="inline-flex items-center gap-3">
+                    <a
+                        href={post.url}
+                        class="text-zinc-400 hover:text-zinc-300"
+                        target="_blank"
+                        ><Fa icon={faArrowUpRightFromSquare} /></a
+                    >
+                    <Link
+                        href="/posts/{post.id}/edit"
+                        class="text-zinc-400 hover:text-zinc-300"
+                        ><Fa icon={faPencilAlt} /></Link
+                    >
+                    <Delete {post} />
+                </div>
+            {/if}
         {/if}
     </div>
 
@@ -73,8 +90,8 @@
         <div class="flex justify-center text-sm gap-4">
             {#each post.tags as tag}
                 <div class="rounded-lg px-2 py-1 bg-zinc-800">
-					<a href="/tag/{tag.slug}">{tag.name}</a>
-				</div>
+                    <a href="/tag/{tag.slug}">{tag.name}</a>
+                </div>
             {/each}
         </div>
     {/if}
