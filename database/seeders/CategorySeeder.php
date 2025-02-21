@@ -13,43 +13,14 @@ class CategorySeeder extends Seeder
 	 */
 	public function run(): void
 	{
-		Category::create(
-			[
-				'name' => 'Music',
-				'slug' => 'music',
-			],
-			[
-				'name' => 'Gaming',
-				'slug' => 'gaming',
-			],
-			[
-				'name' => 'Education',
-				'slug' => 'education',
-			],
-			[
-				'name' => 'Technology',
-				'slug' => 'technology',
-			],
-			[
-				'name' => 'Entertainment',
-				'slug' => 'entertainment',
-			],
-			[
-				'name' => 'Sports',
-				'slug' => 'sports',
-			],
-			[
-				'name' => 'News & Politics',
-				'slug' => 'news-politics',
-			],
-			[
-				'name' => 'Science & Nature',
-				'slug' => 'science-nature',
-			],
-			[
-				'name' => 'Lifestyle',
-				'slug' => 'lifestyle',
-			]
-		);
+		Category::create(['name' => 'Music', 'slug' => 'music']);
+		Category::create(['name' => 'Gaming', 'slug' => 'gaming']);
+		Category::create(['name' => 'Education', 'slug' => 'education']);
+		Category::create(['name' => 'Technology', 'slug' => 'technology']);
+		Category::create(['name' => 'Entertainment', 'slug' => 'entertainment']);
+		Category::create(['name' => 'Sports', 'slug' => 'sports']);
+		Category::create(['name' => 'News & Politics', 'slug' => 'news-politics']);
+		Category::create(['name' => 'Science & Nature', 'slug' => 'science-nature']);
+		Category::create(['name' => 'Lifestyle', 'slug' => 'lifestyle']);
 	}
 }
