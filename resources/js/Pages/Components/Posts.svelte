@@ -24,10 +24,10 @@
                 </Link>
                 <div class="mt-1">
                     <div
-                        class="flex justify-start items-center gap-1 font-bold"
+                        class="inline-flex items-baseline gap-1 font-bold"
                     >
                         {#if post.private}
-                            <Fa icon={faLock} />
+                            <Fa icon={faLock} size="xs" />
                         {/if}
                         <Link href="/v/{post.id}/{post.slug}">{post.title}</Link
                         >

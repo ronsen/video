@@ -23,7 +23,8 @@
 <button
     type="button"
     class="text-zinc-400 cursor-pointer"
-    onclick={() => dialog.showModal()}><Fa icon={faTrashAlt} /></button
+    onclick={() => dialog.showModal()}
+    ><Fa icon={faTrashAlt} size="sm" /></button
 >
 
 <dialog

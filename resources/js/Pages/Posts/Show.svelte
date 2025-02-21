@@ -44,14 +44,12 @@
     </div>
 
     <div
-        class="flex justify-between items-center border-b border-zinc-500 pb-3 mb-3"
+        class="flex justify-between items-baseline border-b border-zinc-500 gap-3 pb-3 mb-3"
     >
         <div>
-            <div
-                class="flex justify-start items-center gap-1 text-lg font-bold"
-            >
+            <div class="inline-flex items-baseline gap-2 text-lg font-bold">
                 {#if post.private}
-                    <Fa icon={faLock} />
+                    <Fa icon={faLock} size="xs" />
                 {/if}
                 <div>{post.title}</div>
             </div>
@@ -69,12 +67,12 @@
                         href={post.url}
                         class="text-zinc-400 hover:text-zinc-300"
                         target="_blank"
-                        ><Fa icon={faArrowUpRightFromSquare} /></a
+                        ><Fa icon={faArrowUpRightFromSquare} size="sm" /></a
                     >
                     <Link
                         href="/posts/{post.id}/edit"
                         class="text-zinc-400 hover:text-zinc-300"
-                        ><Fa icon={faPencilAlt} /></Link
+                        ><Fa icon={faPencilAlt} size="sm" /></Link
                     >
                     <Delete {post} />
                 </div>
