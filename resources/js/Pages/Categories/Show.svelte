@@ -10,7 +10,7 @@
 </script>
 
 <svelte:head>
-    <title>{category.slug}</title>
+    <title>{category.name}</title>
 </svelte:head>
 
 <h3 class="font-bold mb-6 border-b border-zinc-600 gap-3 pb-2">
