@@ -18,12 +18,13 @@ class CategoryController extends Controller
 		$category = Cache::rememberForever("category_{$slug}", function () use ($slug) {
 			return Category::where('slug', $slug)->first();
 		});
-		
+
 		if (!$category) {
 			abort(404);
 		}
 
 		$posts = Post::with('categories', 'user')
+			->isPublic()
 			->whereHas('categories', function (Builder $q) use ($category) {
 				$q->where('category_id', $category->id);
 			})
