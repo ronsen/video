@@ -28,6 +28,8 @@ Route::get('/oauth', [\App\Http\Controllers\Auth\OAuthController::class, 'index'
 Route::get('/oauth/callback', [\App\Http\Controllers\Auth\OAuthController::class, 'callback'])
 	->name('oauth.callback');
 
+Route::get('/category/{slug}', [\App\Http\Controllers\CategoryController::class, 'show'])
+	->name('categories.show');
 Route::get('/v/{id}/{slug}', [\App\Http\Controllers\PostController::class, 'show'])
 	->name('videos.show');
 

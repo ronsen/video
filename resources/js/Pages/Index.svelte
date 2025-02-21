@@ -3,13 +3,17 @@
 </script>
 
 <script>
+    import Categories from "./Components/Categories.svelte";
+
     import Posts from "./Components/Posts.svelte";
 
-    let { posts } = $props();
+    let { posts, categories } = $props();
 </script>
 
 <svelte:head>
     <title>Social Video Bookmarking</title>
 </svelte:head>
+
+<Categories {categories} />
 
 <Posts {posts} showUser={true} />

@@ -6,15 +6,15 @@
     import { Link } from "@inertiajs/svelte";
     import Posts from "../Components/Posts.svelte";
 
-    let { posts, user } = $props();
+    let { posts, category } = $props();
 </script>
 
 <svelte:head>
-    <title>{user.name}</title>
+    <title>{category.slug}</title>
 </svelte:head>
 
 <h3 class="font-bold mb-6 border-b border-zinc-600 gap-3 pb-2">
-    <Link href="/user/{user.id}/{user.slug}">{user.name}</Link>
+    <Link href="/category/{category.slug}">{category.name}</Link>
 </h3>
 
 <Posts {posts} />
