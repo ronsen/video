@@ -34,6 +34,9 @@ class PostResource extends Resource
 				Forms\Components\Select::make('categories')
 					->relationship('categories', 'name')
 					->required(),
+				Forms\Components\Select::make('user_id')
+					->relationship('user', 'name')
+					->required(),
 				Forms\Components\Textarea::make('content')
 					->columnSpanFull(),
 				Forms\Components\Toggle::make('private'),
@@ -46,6 +49,7 @@ class PostResource extends Resource
 			->columns([
 				Tables\Columns\TextColumn::make('title')->searchable(),
 				Tables\Columns\TextColumn::make('categories.name')->listWithLineBreaks(),
+				Tables\Columns\TextColumn::make('user.name'),
 				Tables\Columns\ToggleColumn::make('private'),
 			])
 			->filters([

@@ -23,6 +23,9 @@ class PostsRelationManager extends RelationManager
 					->label('URL')
 					->url()
 					->required(),
+				Forms\Components\Select::make('user_id')
+					->relationship('user', 'name')
+					->required(),
 				Forms\Components\Textarea::make('content')
 					->columnSpanFull(),
 				Forms\Components\Toggle::make('private'),
@@ -35,6 +38,7 @@ class PostsRelationManager extends RelationManager
 			->recordTitleAttribute('title')
 			->columns([
 				Tables\Columns\TextColumn::make('title')->searchable(),
+				Tables\Columns\TextColumn::make('user.name'),
 				Tables\Columns\ToggleColumn::make('private'),
 			])
 			->filters([
