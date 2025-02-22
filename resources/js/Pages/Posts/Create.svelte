@@ -16,6 +16,7 @@
         title: null,
         content: null,
         private: false,
+        category: 0,
     });
 
     function submit(e) {
@@ -47,14 +48,12 @@
 <div class="md:max-w-2xl md:mx-auto">
     <form onsubmit={submit}>
         <div class="mb-3">
-            <!-- svelte-ignore a11y_autofocus -->
             <input
                 type="url"
                 bind:value={$form.url}
                 onchange={fetchTitle}
                 placeholder="URL"
                 class="border border-zinc-600 rounded-lg bg-zinc-800 text-white/90 w-full"
-                autofocus
             />
             <div class="mt-1 text-xs text-gray-400 flex items-center gap-1">
                 <Fa icon={faInfoCircle} />
@@ -80,9 +79,12 @@
             {/if}
         </div>
         <div class="mb-3">
-            <select class="border border-zinc-600 rounded-lg bg-zinc-800 text-white/90 w-full">
+            <select
+                bind:value={$form.category}
+                class="border border-zinc-600 rounded-lg bg-zinc-800 text-white/90 w-full"
+            >
                 {#each categories as category}
-                    <option value="{category.id}">{category.name}</option>
+                    <option value={category.id}>{category.name}</option>
                 {/each}
             </select>
         </div>

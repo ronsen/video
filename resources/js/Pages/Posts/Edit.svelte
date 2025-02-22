@@ -31,13 +31,11 @@
 <div class="md:max-w-2xl md:mx-auto">
     <form onsubmit={submit}>
         <div class="mb-3">
-            <!-- svelte-ignore a11y_autofocus -->
             <input
                 type="url"
                 bind:value={$form.url}
                 placeholder="URL"
                 class="border border-zinc-600 rounded-lg bg-zinc-800 text-white/90 w-full"
-                autofocus
             />
             <div class="mt-1 text-xs text-gray-400 flex items-center gap-1">
                 <Fa icon={faInfoCircle} />

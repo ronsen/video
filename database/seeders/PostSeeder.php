@@ -14,6 +14,10 @@ class PostSeeder extends Seeder
      */
     public function run(): void
     {
-        Post::factory(100)->create();
+        $posts = Post::factory(20)->create();
+
+		foreach ($posts as $post) {
+			$post->categories()->attach(Category::inRandomOrder()->first()->id);
+		}
     }
 }

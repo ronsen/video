@@ -41,7 +41,7 @@ class PostController extends Controller
 			'private' => $request->boolean('private'),
 		]);
 
-		$post->categories()->sync($request->input('category'));
+		$post->categories()->attach($request->input('category'));
 
 		return to_route('videos.show', [$post->id, $post->slug]);
 	}

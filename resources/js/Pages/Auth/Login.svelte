@@ -6,7 +6,7 @@
     import { useForm } from "@inertiajs/svelte";
     import Divider from "../Components/Divider.svelte";
 
-	let { title } = $props();
+    let { title } = $props();
 
     let form = useForm({
         email: "",
@@ -35,13 +35,11 @@
 
         <form onsubmit={submit}>
             <div class="mb-3">
-                <!-- svelte-ignore a11y-autofocus -->
                 <input
                     type="email"
                     bind:value={$form.email}
                     placeholder="E-mail"
                     class="border border-zinc-600 rounded-lg bg-zinc-800 text-white/90 w-full"
-                    autofocus
                 />
                 {#if $form.errors.email}
                     <div class="text-red-500 text-xs mt-1">
