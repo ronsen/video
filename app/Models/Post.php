@@ -30,6 +30,7 @@ class Post extends Model
 		'content_to_html',
 		'video_html',
 		'thumbnail_url',
+		'high_thumbnail_url',
 		'category',
 	];
 
@@ -80,6 +81,13 @@ class Post extends Model
 	{
 		return new Attribute(
 			get: fn() => YoutubeUtil::getThumbnailURL((string) $this->url)
+		);
+	}
+
+	public function highThumbnailUrl(): Attribute
+	{
+		return new Attribute(
+			get: fn() => YoutubeUtil::getThumbnailURL((string) $this->url, 'high')
 		);
 	}
 }
