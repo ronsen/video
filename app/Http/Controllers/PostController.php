@@ -31,6 +31,7 @@ class PostController extends Controller
 		$request->validate([
 			'url' => ['required', 'url'],
 			'title' => ['required'],
+			'category' => ['required'],
 		]);
 
 		$post = Post::create([
@@ -67,6 +68,7 @@ class PostController extends Controller
 		$request->validate([
 			'url' => ['required', 'url'],
 			'title' => ['required'],
+			'category' => ['required'],
 		]);
 
 		$post->url = $request->input('url');

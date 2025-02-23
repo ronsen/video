@@ -87,6 +87,11 @@
                     <option value={category.id}>{category.name}</option>
                 {/each}
             </select>
+			{#if $form.errors.category}
+                <div class="text-red-500 text-xs mt-1">
+                    {$form.errors.category}
+                </div>
+            {/if}
         </div>
         <div class="mb-3">
             <textarea
