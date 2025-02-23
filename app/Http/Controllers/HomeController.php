@@ -16,14 +16,18 @@ class HomeController extends Controller
 
 	public function index(Request $request): Response
 	{
-		$posts = Post::with('user')
-			->isPublic()
-			->when($request->q, function (Builder $q) use ($request) {
-				$q->where('title', 'LIKE', "%{$request->q}%");
-			})
-			->orderBy('id', 'desc')
-			->simplePaginate(self::PER_PAGE)
-			->withQueryString();
+		$page = $request->input('page') ?? 1;
+
+		$posts = Cache::remember("posts_{$page}", now()->addMinutes(10), function () use ($request) {
+			return Post::with('user')
+				->isPublic()
+				->when($request->q, function (Builder $q) use ($request) {
+					$q->where('title', 'LIKE', "%{$request->q}%");
+				})
+				->orderBy('id', 'desc')
+				->simplePaginate(self::PER_PAGE)
+				->withQueryString();
+		});
 
 		$categories = Cache::rememberForever('categories', function () {
 			return Category::orderBy('name', 'asc')->get();
