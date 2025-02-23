@@ -16,7 +16,7 @@
         title: null,
         content: null,
         private: false,
-        category: 0,
+        category: null,
     });
 
     function submit(e) {
