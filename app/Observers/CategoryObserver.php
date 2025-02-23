@@ -2,31 +2,22 @@
 
 namespace App\Observers;
 
-use App\Models\Category;
 use Illuminate\Support\Facades\Cache;
+use App\Models\Category;
 
 class CategoryObserver
 {
-    /**
-     * Handle the Category "created" event.
-     */
-    public function created(Category $category): void
+    public function created(): void
     {
         Cache::forget('categories');
     }
 
-    /**
-     * Handle the Category "updated" event.
-     */
     public function updated(Category $category): void
     {
 		Cache::forget('categories');
         Cache::forget("category_{$category->slug}");
     }
 
-    /**
-     * Handle the Category "deleted" event.
-     */
     public function deleted(Category $category): void
     {
 		Cache::forget('categories');
