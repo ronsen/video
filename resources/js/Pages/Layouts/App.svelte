@@ -16,9 +16,9 @@
 </script>
 
 <nav
-    class="flex justify-between items-center border-b border-zinc-600 px-6 py-2 bg-zinc-800"
+    class="flex gap-4 justify-between items-center border-b border-zinc-600 px-6 py-2 bg-zinc-800"
 >
-    <div class="flex-1">
+    <div class="flex md:flex-1">
         <Link href="/"
             ><img src="/icon-512.png" alt="Video" class="w-6 h-6" /></Link
         >
@@ -28,7 +28,7 @@
         <Search {q} />
     </div>
 
-    <div class="flex-1 text-end">
+    <div class="flex md:flex-1 justify-end">
         <div class="inline-flex gap-3">
             {#if $page.props.auth.user}
                 <Link

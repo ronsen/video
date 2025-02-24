@@ -12,7 +12,7 @@
 
     function submit(e) {
         e.preventDefault();
-        $form.get("/");
+        $form.get("/search");
     }
 </script>
 
