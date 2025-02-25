@@ -23,9 +23,7 @@
                     />
                 </Link>
                 <div class="mt-1">
-                    <div
-                        class="inline-flex items-baseline gap-1 font-bold"
-                    >
+                    <div class="inline-flex items-baseline gap-1 font-bold">
                         {#if post.private}
                             <Fa icon={faLock} size="xs" />
                         {/if}
