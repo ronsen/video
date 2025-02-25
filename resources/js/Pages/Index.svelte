@@ -14,6 +14,8 @@
     <title>Social Video Bookmarking</title>
 </svelte:head>
 
-<Categories {categories} />
+<div class="my-4 px-6">
+    <Categories {categories} />
 
-<Posts {posts} showUser={true} />
+    <Posts {posts} showUser={true} />
+</div>

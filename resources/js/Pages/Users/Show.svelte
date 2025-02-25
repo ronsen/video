@@ -13,8 +13,10 @@
     <title>{user.name}</title>
 </svelte:head>
 
-<h3 class="font-bold mb-6 border-b border-zinc-600 gap-3 pb-2">
-    <Link href="/user/{user.id}/{user.slug}">{user.name}</Link>
-</h3>
+<div class="my-4 px-6">
+    <h3 class="font-bold mb-6 border-b border-zinc-600 gap-3 pb-2">
+        <Link href="/user/{user.id}/{user.slug}">{user.name}</Link>
+    </h3>
 
-<Posts {posts} />
+    <Posts {posts} />
+</div>

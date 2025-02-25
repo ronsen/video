@@ -58,7 +58,7 @@
     </div>
 </nav>
 
-<main class="container mx-auto my-4 px-6 mb-16">
+<main class="container mx-auto mb-16">
     {#if $page.props.flash.message}
         <Alert>{@html $page.props.flash.message}</Alert>
     {/if}
