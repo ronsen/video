@@ -4,9 +4,7 @@
 
 <script>
     import { useForm } from "@inertiajs/svelte";
-
-    import Fa from "svelte-fa";
-    import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+	import { Info } from "lucide-svelte";
 
     let { post, categories } = $props();
 
@@ -39,7 +37,7 @@
                     class="border border-zinc-600 rounded-lg bg-zinc-800 text-white/90 w-full"
                 />
                 <div class="mt-1 text-xs text-gray-400 flex items-center gap-1">
-                    <Fa icon={faInfoCircle} />
+                    <Info size={16} />
                     <span>Only supports YouTube</span>
                 </div>
                 {#if $form.errors.url}

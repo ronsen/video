@@ -1,8 +1,6 @@
 <script>
     import { useForm } from "@inertiajs/svelte";
-
-    import Fa from "svelte-fa";
-    import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+    import { Search } from "lucide-svelte";
 
     let { q } = $props();
 
@@ -22,7 +20,7 @@
             <div
                 class="absolute px-3 p-2.5 top-0 left-0 text-sm text-white/90 hover:text-white"
             >
-                <Fa icon={faMagnifyingGlass} />
+                <Search size={16} />
             </div>
             <input
                 type="search"

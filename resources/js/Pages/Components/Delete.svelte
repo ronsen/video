@@ -1,8 +1,6 @@
 <script>
     import { router } from "@inertiajs/svelte";
-
-    import Fa from "svelte-fa";
-    import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+    import { Trash } from "lucide-svelte";
 
     let { post } = $props();
 
@@ -24,7 +22,7 @@
     type="button"
     class="text-zinc-400 cursor-pointer"
     onclick={() => dialog.showModal()}
-    ><Fa icon={faTrashAlt} size="sm" /></button
+    ><Trash size={16} /></button
 >
 
 <dialog

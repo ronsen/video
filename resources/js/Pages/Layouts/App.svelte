@@ -1,16 +1,8 @@
 <script>
     import { page, Link, inertia } from "@inertiajs/svelte";
+	import { CirclePlus, Code, LogIn, LogOut, User } from "lucide-svelte";
     import Alert from "../Components/Alert.svelte";
     import Search from "../Components/Search.svelte";
-
-    import Fa from "svelte-fa";
-    import {
-        faPlusCircle,
-        faRightFromBracket,
-        faRightToBracket,
-        faUser,
-    } from "@fortawesome/free-solid-svg-icons";
-    import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
     let { children, q } = $props();
 </script>
@@ -34,24 +26,24 @@
                 <Link
                     href="/posts/create"
                     class="text-zinc-400 hover:text-zinc-300"
-                    ><Fa icon={faPlusCircle} /></Link
+                    ><CirclePlus size={16} /></Link
                 >
                 <Link
                     href="/user/{$page.props.auth.user.id}/{$page.props.auth
                         .user.slug}"
                     class="text-zinc-400 hover:text-zinc-300"
-                    ><Fa icon={faUser} /></Link
+                    ><User size={16} /></Link
                 >
                 <button
                     use:inertia={{ href: "/logout", method: "post" }}
-                    class="text-zinc-400 hover:text-zinc-300"
-                    ><Fa icon={faRightFromBracket} /></button
+                    class="text-zinc-400 hover:text-zinc-300 cursor-pointer"
+                    ><LogOut size={16} /></button
                 >
             {/if}
 
             {#if !$page.props.auth.user}
                 <Link href="/login" class="text-zinc-400 hover:text-zinc-300"
-                    ><Fa icon={faRightToBracket} /></Link
+                    ><LogIn size={16} /></Link
                 >
             {/if}
         </div>
@@ -70,6 +62,6 @@
     class="fixed bottom-0 left-1/2 -translate-x-1/2 py-4 bg-zinc-900/90 w-full flex justify-center"
 >
     <a href="https://github.com/ronsen/video" target="_blank"
-        ><Fa icon={faGithub} /></a
+        ><Code size={16} /></a
     >
 </footer>

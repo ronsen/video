@@ -1,11 +1,6 @@
 <script>
     import { Link } from "@inertiajs/svelte";
-
-    import Fa from "svelte-fa";
-    import {
-        faArrowLeft,
-        faArrowRight,
-    } from "@fortawesome/free-solid-svg-icons";
+    import { MoveLeft, MoveRight } from "lucide-svelte";
 
     let { data } = $props();
 </script>
@@ -16,12 +11,12 @@
             <Link
                 href={data.prev_page_url}
                 class="px-3 py-2 border border-zinc-600 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-sm text-white/90"
-                ><Fa icon={faArrowLeft} /></Link
+                ><MoveLeft size={16} /></Link
             >
         {:else}
             <button
                 class="px-3 py-2 border border-zinc-700 rounded-lg bg-zinc-800 text-sm text-white/20 cursor-default"
-                ><Fa icon={faArrowLeft} /></button
+                ><MoveLeft size={16} /></button
             >
         {/if}
 
@@ -29,12 +24,12 @@
             <Link
                 href={data.next_page_url}
                 class="px-3 py-2 border border-zinc-600 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-sm text-white/90"
-                ><Fa icon={faArrowRight} /></Link
+                ><MoveRight size={16} /></Link
             >
         {:else}
             <button
                 class="px-3 py-2 border border-zinc-700 rounded-lg bg-zinc-800 text-sm text-white/20 cursor-default"
-                ><Fa icon={faArrowRight} /></button
+                ><MoveRight size={16} /></button
             >
         {/if}
     </div>

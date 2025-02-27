@@ -1,10 +1,8 @@
 <script>
     import { Link } from "@inertiajs/svelte";
+    import { Lock } from "lucide-svelte";
     import Alert from "../Components/Alert.svelte";
     import Pagination from "../Components/Pagination.svelte";
-
-    import Fa from "svelte-fa";
-    import { faLock } from "@fortawesome/free-solid-svg-icons";
 
     let { posts, showUser } = $props();
 </script>
@@ -25,7 +23,7 @@
                 <div class="mt-1">
                     <div class="inline-flex items-baseline gap-1 font-bold">
                         {#if post.private}
-                            <Fa icon={faLock} size="xs" />
+                            <Lock size={16} />
                         {/if}
                         <Link href="/v/{post.id}/{post.slug}">{post.title}</Link
                         >

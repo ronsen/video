@@ -4,15 +4,8 @@
 
 <script>
     import { page, Link } from "@inertiajs/svelte";
+    import { CirclePlay, ExternalLink, Lock, Pencil } from "lucide-svelte";
     import Delete from "../Components/Delete.svelte";
-
-    import Fa from "svelte-fa";
-    import {
-        faPencilAlt,
-        faPlayCircle,
-        faArrowUpRightFromSquare,
-        faLock,
-    } from "@fortawesome/free-solid-svg-icons";
 
     let { post, owner } = $props();
 
@@ -40,7 +33,7 @@
                 onclick={play}
                 class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-red-500 hover:text-red-600"
             >
-                <Fa icon={faPlayCircle} size="4x" />
+                <CirclePlay size={96} />
             </button>
         </div>
     </div>
@@ -52,7 +45,7 @@
             <div>
                 <div class="inline-flex items-baseline gap-2 text-lg font-bold">
                     {#if post.private}
-                        <Fa icon={faLock} size="xs" />
+                        <Lock size={16} />
                     {/if}
                     <div>{post.title}</div>
                 </div>
@@ -69,13 +62,12 @@
                         <a
                             href={post.url}
                             class="text-zinc-400 hover:text-zinc-300"
-                            target="_blank"
-                            ><Fa icon={faArrowUpRightFromSquare} size="sm" /></a
+                            target="_blank"><ExternalLink size={16} /></a
                         >
                         <Link
                             href="/posts/{post.id}/edit"
                             class="text-zinc-400 hover:text-zinc-300"
-                            ><Fa icon={faPencilAlt} size="sm" /></Link
+                            ><Pencil size={16} /></Link
                         >
                         <Delete {post} />
                     </div>
