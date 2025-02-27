@@ -1,5 +1,5 @@
 <script>
-	import { Info } from "lucide-svelte";
+	import { Info, X } from "lucide-svelte";
 
     let { children } = $props();
 
@@ -16,10 +16,10 @@
         class="flex justify-between items-center shadow-lg border border-zinc-500 p-4 rounded-lg mb-6"
     >
         <div class="inline-flex items-center gap-2">
-            <Info />
+            <Info size={16} />
             {@render children()}
         </div>
         <span></span>
-        <button onclick={close}><Fa icon={faXmark} /></button>
+        <button onclick={close}><X size={16} /></button>
     </div>
 {/if}
