@@ -43,7 +43,7 @@ class YoutubeUtil
 		return false;
 	}
 
-	public static function getThumbnailURL(string $url, string $quality = 'default'): string
+	public static function getThumbnailURL(string $url, string $quality = 'default'): string|null
 	{
 		try {
 			$videoId = static::getVideoId($url);

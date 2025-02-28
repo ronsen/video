@@ -1,7 +1,7 @@
 <script>
-    let { children } = $props();
+	let { children } = $props();
 </script>
 
 <main class="flex items-center justify-center h-screen">
-    {@render children()}
+	{@render children()}
 </main>

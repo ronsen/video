@@ -20,7 +20,7 @@ class PostController extends Controller
 		$categories = Cache::rememberForever('categories', function () {
 			return Category::orderBy('name', 'asc')->get();
 		});
-		
+
 		return Inertia::render('Posts/Create', [
 			'categories' => $categories,
 		]);

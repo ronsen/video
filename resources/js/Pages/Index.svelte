@@ -1,21 +1,21 @@
 <script module>
-    export { default as layout } from "./Layouts/App.svelte";
+	export { default as layout } from "./Layouts/App.svelte";
 </script>
 
 <script>
-    import Categories from "./Components/Categories.svelte";
+	import Categories from "./Components/Categories.svelte";
 
-    import Posts from "./Components/Posts.svelte";
+	import Posts from "./Components/Posts.svelte";
 
-    let { posts, categories } = $props();
+	let { posts, categories } = $props();
 </script>
 
 <svelte:head>
-    <title>Social Video Bookmarking</title>
+	<title>Social Video Bookmarking</title>
 </svelte:head>
 
 <div class="my-4 px-6">
-    <Categories {categories} />
+	<Categories {categories} />
 
-    <Posts {posts} showUser={true} />
+	<Posts {posts} showUser={true} />
 </div>
