@@ -1,5 +1,5 @@
 <script>
-	import { Info, X } from "lucide-svelte";
+	import { Info, X } from "@lucide/svelte";
 
 	let { children } = $props();
 

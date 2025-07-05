@@ -22,3 +22,7 @@ yarn-error.log
 /.vscode
 /.zed
 /public/vendor/livewire
+/data
+**/caddy
+frankenphp
+frankenphp-worker.php

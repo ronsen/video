@@ -1,6 +1,6 @@
 <script>
 	import { Link } from "@inertiajs/svelte";
-	import { House } from "lucide-svelte";
+	import { House } from "@lucide/svelte";
 
 	let { categories } = $props();
 </script>

@@ -1,6 +1,6 @@
 <script>
 	import { useForm } from "@inertiajs/svelte";
-	import { Search } from "lucide-svelte";
+	import { Search } from "@lucide/svelte";
 
 	let { q } = $props();
 

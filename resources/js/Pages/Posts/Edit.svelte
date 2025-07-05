@@ -4,7 +4,7 @@
 
 <script>
 	import { useForm } from "@inertiajs/svelte";
-	import { Info } from "lucide-svelte";
+	import { Info } from "@lucide/svelte";
 
 	let { post, categories } = $props();
 

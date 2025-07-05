@@ -12,6 +12,7 @@
     "filament/filament": "^3.2",
     "inertiajs/inertia-laravel": "^2.0",
     "laravel/framework": "^11.0",
+    "laravel/octane": "^2.10",
     "laravel/socialite": "^5.15",
     "laravel/tinker": "^2.9"
   },
@@ -41,7 +42,8 @@
       "@php artisan filament:upgrade"
     ],
     "post-update-cmd": [
-      "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+      "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
+	  "@php artisan vendor:publish --tag=livewire:assets --ansi --force"
     ],
     "post-root-package-install": [
       "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""

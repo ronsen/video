@@ -1,0 +1,12 @@
+services:
+  video:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: video
+    ports:
+      - "49165:8000"
+    volumes:
+      - ./data/storage:/var/www/html/storage/app/public
+      - ./data/database.sqlite:/var/www/html/database/database.sqlite
+    restart: unless-stopped

@@ -1,6 +1,6 @@
 <script>
 	import { Link } from "@inertiajs/svelte";
-	import { Lock } from "lucide-svelte";
+	import { Lock } from "@lucide/svelte";
 	import Alert from "../Components/Alert.svelte";
 	import Pagination from "../Components/Pagination.svelte";
 

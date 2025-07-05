@@ -4,7 +4,7 @@
 
 <script>
 	import { page, Link } from "@inertiajs/svelte";
-	import { CirclePlay, ExternalLink, Lock, Pencil } from "lucide-svelte";
+	import { CirclePlay, ExternalLink, Lock, Pencil } from "@lucide/svelte";
 	import Delete from "../Components/Delete.svelte";
 
 	let { post, owner } = $props();

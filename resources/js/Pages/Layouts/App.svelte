@@ -1,6 +1,6 @@
 <script>
 	import { page, Link, inertia } from "@inertiajs/svelte";
-	import { CirclePlus, Code, LogIn, LogOut, User } from "lucide-svelte";
+	import { CirclePlus, Code, LogIn, LogOut, User } from "@lucide/svelte";
 	import Alert from "../Components/Alert.svelte";
 	import Search from "../Components/Search.svelte";
 
