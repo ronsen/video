@@ -50,7 +50,7 @@
 	</div>
 </nav>
 
-<main class="container mx-auto mb-16">
+<main class="container mx-auto mb-8">
 	{#if $page.props.flash.message}
 		<Alert>{@html $page.props.flash.message}</Alert>
 	{/if}
@@ -59,7 +59,7 @@
 </main>
 
 <footer
-	class="fixed bottom-0 left-1/2 -translate-x-1/2 py-4 bg-zinc-900/90 w-full flex justify-center"
+	class="py-4 bg-zinc-900/90 w-full flex justify-center border-t border-zinc-800 container mx-auto"
 >
 	<a href="https://github.com/ronsen/video" target="_blank"
 		><Code size={16} /></a
