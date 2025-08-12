@@ -13,13 +13,15 @@
 	<div class="grid md:grid-cols-3 gap-4">
 		{#each posts.data as post}
 			<div>
-				<Link href="/v/{post.id}/{post.slug}"
-					><img
-						src={post.thumbnail_url}
-						alt={post.title}
-						class="w-full rounded-lg object-cover"
-					/>
-				</Link>
+				{#if post.thumbnail_url}
+					<Link href="/v/{post.id}/{post.slug}"
+						><img
+							src={post.thumbnail_url}
+							alt={post.title}
+							class="w-full rounded-lg object-cover"
+						/>
+					</Link>
+				{/if}
 				<div class="mt-1">
 					<div class="inline-flex items-baseline gap-1 font-bold">
 						{#if post.private}

@@ -9,7 +9,7 @@
 
 	let { post, owner } = $props();
 
-	let video;
+	let video = $state("");
 
 	function play() {
 		video.innerHTML = post.video_html;
@@ -22,20 +22,22 @@
 
 <article class="md:max-w-2xl md:mx-auto">
 	<div class="m-0 md:my-4">
-		<div bind:this={video} class="relative mb-4">
-			<img
-				src={post.high_thumbnail_url}
-				alt={post.title}
-				class="w-full"
-			/>
+		{#if post.high_thumbnail_url}
+			<div bind:this={video} class="relative mb-4">
+				<img
+					src={post.high_thumbnail_url}
+					alt={post.title}
+					class="w-full"
+				/>
 
-			<button
-				onclick={play}
-				class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-red-500 hover:text-red-600"
-			>
-				<CirclePlay size={96} />
-			</button>
-		</div>
+				<button
+					onclick={play}
+					class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-red-500 hover:text-red-600"
+				>
+					<CirclePlay size={96} />
+				</button>
+			</div>
+		{/if}
 	</div>
 
 	<div class="my-4 px-6 md:m-0 md:p-0">

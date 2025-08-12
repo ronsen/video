@@ -2,59 +2,61 @@
 
 namespace App\Utils;
 
-use Exception;
-
 class YoutubeUtil
 {
-	public static function getVideoId(string $url): string|bool
+	public static function getVideoId(string $url): string
 	{
-		if (strpos(strtolower($url), 'youtube.com') !== false || strpos(strtolower($url), 'youtu.be') !== false) {
-			$videoId = '';
+		$host = parse_url($url, PHP_URL_HOST);
 
-			if (strpos(strtolower($url), '/shorts/') !== false) {
-				$urlPath = parse_url($url, PHP_URL_PATH);
-				$videoId = substr($urlPath, strrpos($urlPath, '/') + 1, strlen($urlPath));
+		$videoId = '';
+
+		if (strpos($host, 'youtube.com') !== false) {
+			if (strpos($url, 'shorts') !== false) {
+				$path = parse_url($url, PHP_URL_PATH);
+				$segments = explode('/', trim($path, '/'));
+				$videoId = $segments[1];
 			} else {
-				preg_match("#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+(?=\?)|(?<=v=)[^&\n]+|(?<=youtu.be/)[^&\n]+#", $url, $matches);
-				$videoId = $matches[0];
+				parse_str(parse_url($url, PHP_URL_QUERY), $queryParams);
+				$videoId = $queryParams['v'];
 			}
-
-			return $videoId;
 		}
 
-		return false;
+		if ($host === 'youtu.be') {
+			$path = parse_url($url, PHP_URL_PATH);
+			$videoId = ltrim($path, '/');
+		}
+
+		return $videoId;
 	}
 
-	public static function parse(string $url): string|bool
+	public static function parse(string $url): string|null
 	{
-		try {
-			$videoId = static::getVideoId($url);
+		$videoId = static::getVideoId($url);
 
-			$html = '<iframe class="w-full aspect-video" src="https://www.youtube.com/embed/%s?autoplay=1" '
-				. 'allow="accelerometer; autoplay; encrypted-media; gyroscope; gyroscope; picture-in-picture; web-share" '
-				. 'referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>'
-				. '</iframe>';
-
-			return sprintf($html, $videoId);
-		} catch (Exception $e) {
-			return false;
+		if (!$videoId) {
+			return null;
 		}
 
-		return false;
+		$html = '<iframe class="w-full aspect-video" src="https://www.youtube.com/embed/%s?autoplay=1" '
+			. 'allow="accelerometer; autoplay; encrypted-media; gyroscope; gyroscope; picture-in-picture; web-share" '
+			. 'referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>'
+			. '</iframe>';
+
+		return sprintf($html, $videoId);
 	}
 
 	public static function getThumbnailURL(string $url, string $quality = 'default'): string|null
 	{
-		try {
-			$videoId = static::getVideoId($url);
+		$videoId = static::getVideoId($url);
 
-			if ($quality == 'high') {
-				return sprintf('https://img.youtube.com/vi/%s/maxresdefault.jpg', $videoId);
-			}
-
-			return sprintf('https://img.youtube.com/vi/%s/mqdefault.jpg', $videoId);
-		} catch (Exception $e) {
+		if (!$videoId) {
 			return null;
 		}
+
+		if ($quality == 'high') {
+			return sprintf('https://img.youtube.com/vi/%s/maxresdefault.jpg', $videoId);
+		}
+
+		return sprintf('https://img.youtube.com/vi/%s/mqdefault.jpg', $videoId);
 	}
 }
