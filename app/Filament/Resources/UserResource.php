@@ -51,6 +51,8 @@ class UserResource extends Resource
 				Tables\Columns\TextColumn::make('email')
 					->sortable()
 					->searchable(),
+				Tables\Columns\TextColumn::make('created_at')
+					->date(),
 			])
 			->filters([
 				//
