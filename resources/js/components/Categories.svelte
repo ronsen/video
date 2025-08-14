@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { Category } from "@/types";
 	import { Link } from "@inertiajs/svelte";
 	import { House } from "@lucide/svelte";
+	import type { Category } from "@/types";
 
 	let { categories }: { categories: Category[] } = $props();
 </script>

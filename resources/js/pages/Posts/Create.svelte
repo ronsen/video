@@ -2,7 +2,7 @@
 	import { useForm } from "@inertiajs/svelte";
 	import { Info } from "@lucide/svelte";
 	import type { Category } from "@/types";
-	import App from "../Layouts/App.svelte";
+	import App from "@/layouts/App.svelte";
 
 	let { categories }: { categories: Category[] } = $props();
 

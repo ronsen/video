@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { Post } from "@/types";
 	import { router } from "@inertiajs/svelte";
 	import { Trash } from "@lucide/svelte";
+	import type { Post } from "@/types";
 
 	let { post }: { post: Post } = $props();
 

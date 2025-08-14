@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { useForm } from "@inertiajs/svelte";
-	import Divider from "../Components/Divider.svelte";
-	import Guest from "../Layouts/Guest.svelte";
+	import Divider from "@/components/Divider.svelte";
+	import Guest from "@/layouts/Guest.svelte";
 
 	let { title }: { title: string } = $props();
 

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { useForm } from "@inertiajs/svelte";
 	import { Info } from "@lucide/svelte";
-	import App from "../Layouts/App.svelte";
+	import App from "@/layouts/App.svelte";
 	import type { Category, Post } from "@/types";
 
 	let { post, categories }: { post: Post; categories: Category[] } = $props();

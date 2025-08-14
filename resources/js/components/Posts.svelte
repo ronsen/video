@@ -2,8 +2,8 @@
 	import { Link } from "@inertiajs/svelte";
 	import { Lock } from "@lucide/svelte";
 	import type { Post } from "@/types";
-	import Alert from "../Components/Alert.svelte";
-	import Pagination from "../Components/Pagination.svelte";
+	import Alert from "@/components/Alert.svelte";
+	import Pagination from "@/components/Pagination.svelte";
 
 	interface Props {
 		posts: {

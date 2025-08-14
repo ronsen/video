@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { Link } from "@inertiajs/svelte";
-	import App from "../Layouts/App.svelte";
-	import Posts from "../Components/Posts.svelte";
-	import type { Post, User } from "@/types";
+	import type { Category, Post } from "@/types";
+	import App from "@/layouts/App.svelte";
+	import Posts from "@/components/Posts.svelte";
 
 	interface Props {
 		posts: {
@@ -10,20 +10,20 @@
 			prev_page_url: string;
 			next_page_url: string;
 		};
-		user: User;
+		category: Category;
 	}
 
-	let { posts, user }: Props = $props();
+	let { posts, category }: Props = $props();
 </script>
 
 <svelte:head>
-	<title>{user.name}</title>
+	<title>{category.name}</title>
 </svelte:head>
 
 <App>
 	<div class="my-4 px-6">
 		<h3 class="font-bold mb-6 border-b border-zinc-600 gap-3 pb-2">
-			<Link href="/user/{user.id}/{user.slug}">{user.name}</Link>
+			<Link href="/category/{category.slug}">{category.name}</Link>
 		</h3>
 
 		<Posts {posts} showUser={true} />

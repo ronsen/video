@@ -2,8 +2,8 @@
 	import { page, Link } from "@inertiajs/svelte";
 	import { CirclePlay, ExternalLink, Lock, Pencil } from "@lucide/svelte";
 	import type { Post } from "@/types";
-	import App from "../Layouts/App.svelte";
-	import Delete from "../Components/Delete.svelte";
+	import App from "@/layouts/App.svelte";
+	import Delete from "@/components/Delete.svelte";
 
 	let { post, owner }: { post: Post; owner: boolean } = $props();
 

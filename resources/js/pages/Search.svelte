@@ -1,8 +1,8 @@
 <script lang="ts">
 	import type { Category, Post } from "@/types";
-	import App from "./Layouts/App.svelte";
-	import Categories from "./Components/Categories.svelte";
-	import Posts from "./Components/Posts.svelte";
+	import App from "@/layouts/App.svelte";
+	import Categories from "@/components/Categories.svelte";
+	import Posts from "@/components/Posts.svelte";
 
 	interface Props {
 		posts: {
@@ -11,13 +11,14 @@
 			next_page_url: string;
 		};
 		categories: Category[];
+		q: string;
 	}
 
-	let { posts, categories }: Props = $props();
+	let { posts, categories, q } = $props();
 </script>
 
 <svelte:head>
-	<title>Social Video Bookmarking</title>
+	<title>{q}</title>
 </svelte:head>
 
 <App>

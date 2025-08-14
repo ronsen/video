@@ -2,8 +2,8 @@
 	import { page, Link, inertia } from "@inertiajs/svelte";
 	import { CirclePlus, Code, LogIn, LogOut, User } from "@lucide/svelte";
 	import type { Snippet } from "svelte";
-	import Alert from "../Components/Alert.svelte";
-	import Search from "../Components/Search.svelte";
+	import Alert from "@/components/Alert.svelte";
+	import Search from "@/components/Search.svelte";
 
 	let { children, q }: { children: Snippet; q?: string } = $props();
 </script>
