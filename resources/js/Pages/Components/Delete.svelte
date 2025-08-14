@@ -1,17 +1,18 @@
-<script>
+<script lang="ts">
+	import type { Post } from "@/types";
 	import { router } from "@inertiajs/svelte";
 	import { Trash } from "@lucide/svelte";
 
-	let { post } = $props();
+	let { post }: { post: Post } = $props();
 
-	let dialog;
+	let dialog: HTMLDialogElement;
 
-	function close(e) {
+	function close(e: MouseEvent) {
 		e.preventDefault();
 		dialog.close();
 	}
 
-	function submit(e) {
+	function submit(e: SubmitEvent) {
 		e.preventDefault();
 		router.delete(`/posts/${post.id}`);
 		dialog.close();

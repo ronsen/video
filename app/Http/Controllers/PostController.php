@@ -6,6 +6,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
 use Inertia\Inertia;
@@ -84,7 +85,9 @@ class PostController extends Controller
 
 	public function show(int $id, string $slug): Response|RedirectResponse
 	{
-		$post = Post::with('categories', 'user')->findOrFail($id);
+		$post = Cache::rememberForever("post_{$id}", function () use ($id) {
+			return Post::with('categories', 'user')->findOrFail($id);
+		});
 
 		if ($post->private) {
 			Gate::authorize('show', $post);
@@ -94,7 +97,7 @@ class PostController extends Controller
 			return redirect()->route('videos.show', [$post->id, $post->slug]);
 		}
 
-		$post->increment('watched');
+		DB::table('posts')->increment('watched');
 
 		return Inertia::render('Posts/Show', [
 			'post' => $post,

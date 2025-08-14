@@ -1,7 +1,8 @@
-<script>
+<script lang="ts">
+	import type { Snippet } from "svelte";
 	import { Info, X } from "@lucide/svelte";
 
-	let { children } = $props();
+	let { children }: { children: Snippet } = $props();
 
 	let show = $state(true);
 </script>
@@ -15,6 +16,8 @@
 			{@render children()}
 		</div>
 		<span></span>
-		<button onclick={show = !show} class="cursor-pointer"><X size={16} /></button>
+		<button onclick={() => (show = !show)} class="cursor-pointer"
+			><X size={16} /></button
+		>
 	</div>
 {/if}

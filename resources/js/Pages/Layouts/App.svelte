@@ -1,10 +1,11 @@
-<script>
+<script lang="ts">
 	import { page, Link, inertia } from "@inertiajs/svelte";
 	import { CirclePlus, Code, LogIn, LogOut, User } from "@lucide/svelte";
+	import type { Snippet } from "svelte";
 	import Alert from "../Components/Alert.svelte";
 	import Search from "../Components/Search.svelte";
 
-	let { children, q } = $props();
+	let { children, q }: { children: Snippet; q?: string } = $props();
 </script>
 
 <nav
@@ -51,8 +52,8 @@
 </nav>
 
 <main class="container mx-auto mb-8">
-	{#if $page.props.flash.message}
-		<Alert>{@html $page.props.flash.message}</Alert>
+	{#if $page.props.flash}
+		<Alert>{@html $page.props.flash}</Alert>
 	{/if}
 
 	{@render children()}

@@ -1,10 +1,20 @@
-<script>
+<script lang="ts">
 	import { Link } from "@inertiajs/svelte";
 	import { Lock } from "@lucide/svelte";
+	import type { Post } from "@/types";
 	import Alert from "../Components/Alert.svelte";
 	import Pagination from "../Components/Pagination.svelte";
 
-	let { posts, showUser } = $props();
+	interface Props {
+		posts: {
+			data: Post[];
+			prev_page_url: string;
+			next_page_url: string;
+		};
+		showUser: boolean;
+	}
+
+	let { posts, showUser }: Props = $props();
 </script>
 
 {#if posts.data.length == 0}

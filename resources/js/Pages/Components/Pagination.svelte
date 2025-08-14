@@ -1,8 +1,12 @@
-<script>
+<script lang="ts">
 	import { Link } from "@inertiajs/svelte";
 	import { MoveLeft, MoveRight } from "@lucide/svelte";
 
-	let { data } = $props();
+	interface Props {
+		data: { prev_page_url: string; next_page_url: string };
+	}
+
+	let { data }: Props = $props();
 </script>
 
 <div class="mt-6">

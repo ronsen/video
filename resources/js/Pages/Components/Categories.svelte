@@ -1,8 +1,9 @@
-<script>
+<script lang="ts">
+	import type { Category } from "@/types";
 	import { Link } from "@inertiajs/svelte";
 	import { House } from "@lucide/svelte";
 
-	let { categories } = $props();
+	let { categories }: { categories: Category[] } = $props();
 </script>
 
 <div class="overflow-x-auto mb-4">

@@ -1,14 +1,14 @@
-<script>
+<script lang="ts">
 	import { useForm } from "@inertiajs/svelte";
 	import { Search } from "@lucide/svelte";
 
-	let { q } = $props();
+	let { q }: { q?: string } = $props();
 
 	let form = useForm({
 		q,
 	});
 
-	function submit(e) {
+	function submit(e: SubmitEvent) {
 		e.preventDefault();
 		$form.get("/search");
 	}
