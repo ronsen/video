@@ -4,8 +4,12 @@ namespace App\Utils;
 
 class YoutubeUtil
 {
-	public static function getVideoId(string $url): string
+	public static function getVideoId(string $url): string|null
 	{
+		if (!static::valid($url)) {
+			return null;
+		}
+
 		$host = parse_url($url, PHP_URL_HOST);
 
 		$videoId = '';
@@ -31,6 +35,10 @@ class YoutubeUtil
 
 	public static function parse(string $url): string|null
 	{
+		if (!static::valid($url)) {
+			return null;
+		}
+
 		$videoId = static::getVideoId($url);
 
 		if (!$videoId) {
@@ -47,6 +55,10 @@ class YoutubeUtil
 
 	public static function getThumbnailURL(string $url, string $quality = 'default'): string|null
 	{
+		if (!static::valid($url)) {
+			return null;
+		}
+
 		$videoId = static::getVideoId($url);
 
 		if (!$videoId) {
@@ -58,5 +70,11 @@ class YoutubeUtil
 		}
 
 		return sprintf('https://img.youtube.com/vi/%s/mqdefault.jpg', $videoId);
+	}
+
+	private static function valid(string $url): bool
+	{
+		return str_contains(strtolower($url), 'youtube.com')
+			|| str_contains(strtolower($url), 'youtu.be');
 	}
 }
