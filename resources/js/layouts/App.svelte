@@ -1,17 +1,40 @@
 <script lang="ts">
 	import { page, Link, inertia } from "@inertiajs/svelte";
-	import { CirclePlus, Code, LogIn, LogOut, User } from "@lucide/svelte";
+	import {
+		CirclePlus,
+		Code,
+		LogIn,
+		LogOut,
+		User,
+		Menu,
+		X,
+	} from "@lucide/svelte";
 	import type { Snippet } from "svelte";
 	import Alert from "@/components/Alert.svelte";
+	import Categories from "@/components/Categories.svelte";
 	import Search from "@/components/Search.svelte";
+	import type { Category } from "@/types";
 
-	let { children, q }: { children: Snippet; q?: string } = $props();
+	let {
+		children,
+		categories,
+		q,
+	}: { children: Snippet; categories: Category[]; q?: string } = $props();
+
+	let show = $state(false);
+
+	function showMenu() {
+		show = !show;
+	}
 </script>
 
 <nav
 	class="flex gap-4 justify-between items-center border-b border-zinc-600 px-6 py-2 bg-zinc-800"
 >
-	<div class="flex md:flex-1">
+	<div class="flex md:flex-1 items-center gap-2">
+		<button class="cursor-pointer" onclick={showMenu}
+			><Menu size={16} /></button
+		>
 		<Link href="/"
 			><img src="/icon-512.png" alt="Video" class="w-6 h-6" /></Link
 		>
@@ -66,3 +89,14 @@
 		><Code size={16} /></a
 	>
 </footer>
+
+{#if show}
+	<div
+		class="fixed h-screen top-0 left-0 bg-zinc-800 shadow w-full md:w-md z-10"
+	>
+		<div class="flex justify-end p-4">
+			<button class="cursor-pointer" onclick={showMenu}><X /></button>
+		</div>
+		<Categories {categories} />
+	</div>
+{/if}

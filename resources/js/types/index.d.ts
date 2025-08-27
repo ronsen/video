@@ -2,8 +2,8 @@ export type Category = {
 	id: number;
 	name: string;
 	slug: string;
-	created_at: Date;
-	updated_at: Date;
+	created_at: string;
+	updated_at: string;
 }
 
 export type Post = {
@@ -20,8 +20,8 @@ export type Post = {
 	thumbnail_url: string;
 	high_thumbnail_url: string;
 	category?: number;
-	created_at: Date;
-	updated_at: Date;
+	created_at: string;
+	updated_at: string;
 }
 
 export type User = {
@@ -29,8 +29,8 @@ export type User = {
 	name: string;
 	email: string;
 	slug: string;
-	created_at: Date;
-	updated_at: Date;
+	created_at: string;
+	updated_at: string;
 }
 
 export interface Auth {

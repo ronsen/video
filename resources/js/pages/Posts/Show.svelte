@@ -1,11 +1,15 @@
 <script lang="ts">
 	import { page, Link } from "@inertiajs/svelte";
 	import { CirclePlay, ExternalLink, Lock, Pencil } from "@lucide/svelte";
-	import type { Post } from "@/types";
+	import type { Category, Post } from "@/types";
 	import App from "@/layouts/App.svelte";
 	import Delete from "@/components/Delete.svelte";
 
-	let { post, owner }: { post: Post; owner: boolean } = $props();
+	let {
+		categories,
+		post,
+		owner,
+	}: { categories: Category[]; post: Post; owner: boolean } = $props();
 
 	function play() {
 		const video = document.querySelector("#video");
@@ -17,7 +21,7 @@
 	<title>{post.title}</title>
 </svelte:head>
 
-<App>
+<App {categories}>
 	<article class="md:max-w-2xl md:mx-auto">
 		<div class="m-0 md:my-4">
 			{#if post.high_thumbnail_url}

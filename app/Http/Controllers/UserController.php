@@ -11,10 +11,13 @@ use Inertia\Inertia;
 use Inertia\Response;
 use App\Models\Post;
 use App\Models\User;
+use App\Repositories\CategoryRepository;
 
 class UserController extends Controller
 {
 	const PER_PAGE = 9;
+
+	public function __construct(public CategoryRepository $categoryRepository) {}
 
 	public function show(int $id, string $slug, Request $request): Response|RedirectResponse
 	{
@@ -40,6 +43,7 @@ class UserController extends Controller
 		});
 
 		return Inertia::render('Users/Show', [
+			'categories' => $this->categoryRepository->getCategories(),
 			'posts' => $posts,
 			'user' => $user,
 		]);

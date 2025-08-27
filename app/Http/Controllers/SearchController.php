@@ -9,10 +9,13 @@ use Inertia\Inertia;
 use Inertia\Response;
 use App\Models\Category;
 use App\Models\Post;
+use App\Repositories\CategoryRepository;
 
 class SearchController extends Controller
 {
 	const PER_PAGE = 9;
+
+	public function __construct(public CategoryRepository $categoryRepository) {}
 
 	public function index(Request $request): Response
 	{
@@ -29,14 +32,10 @@ class SearchController extends Controller
 				->withQueryString();
 		});
 
-		$categories = Cache::rememberForever('categories', function () {
-			return Category::orderBy('name', 'asc')->get();
-		});
-
 		return Inertia::render('Search', [
+			'categories' => $this->categoryRepository->getCategories(),
 			'q' => $request->q,
 			'posts' => $posts,
-			'categories' => $categories,
 		]);
 	}
 }

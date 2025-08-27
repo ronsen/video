@@ -12,7 +12,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 use App\Observers\PostObserver;
-use App\Utils\VideoUtil;
 use App\Utils\YoutubeUtil;
 
 #[ObservedBy(PostObserver::class)]

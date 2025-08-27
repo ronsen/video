@@ -6,15 +6,15 @@
 	let { categories }: { categories: Category[] } = $props();
 </script>
 
-<div class="overflow-x-auto mb-4">
-	<ul class="inline-flex items-center gap-4 mb-2">
-		<li><Link href="/"><House size={16} /></Link></li>
-		{#each categories as category}
-			<li>
-				<Link href="/category/{category.slug}" class="text-nowrap"
-					>{category.name}</Link
-				>
-			</li>
-		{/each}
-	</ul>
-</div>
+<ul>
+	<li class="px-6 py-2 hover:bg-zinc-900">
+		<Link href="/"><House size={16} /></Link>
+	</li>
+	{#each categories as category}
+		<li class="px-6 py-2 hover:bg-zinc-900">
+			<Link href="/category/{category.slug}" class="text-nowrap block"
+				>{category.name}</Link
+			>
+		</li>
+	{/each}
+</ul>

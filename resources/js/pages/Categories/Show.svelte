@@ -11,16 +11,17 @@
 			next_page_url: string;
 		};
 		category: Category;
+		categories: Category[];
 	}
 
-	let { posts, category }: Props = $props();
+	let { posts, category, categories }: Props = $props();
 </script>
 
 <svelte:head>
 	<title>{category.name}</title>
 </svelte:head>
 
-<App>
+<App {categories}>
 	<div class="my-4 px-6">
 		<h3 class="font-bold mb-6 border-b border-zinc-600 gap-3 pb-2">
 			<Link href="/category/{category.slug}">{category.name}</Link>

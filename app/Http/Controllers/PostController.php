@@ -13,17 +13,16 @@ use Inertia\Inertia;
 use Inertia\Response;
 use App\Models\Category;
 use App\Models\Post;
+use App\Repositories\CategoryRepository;
 
 class PostController extends Controller
 {
+	public function __construct(public CategoryRepository $categoryRepository) {}
+
 	public function create(): Response
 	{
-		$categories = Cache::rememberForever('categories', function () {
-			return Category::orderBy('name', 'asc')->get();
-		});
-
 		return Inertia::render('Posts/Create', [
-			'categories' => $categories,
+			'categories' => $this->categoryRepository->getCategories(),
 		]);
 	}
 
@@ -100,6 +99,7 @@ class PostController extends Controller
 		DB::table('posts')->increment('watched');
 
 		return Inertia::render('Posts/Show', [
+			'categories' => $this->categoryRepository->getCategories(),
 			'post' => $post,
 			'owner' => Auth::check() ? Auth::user()->id == $post->user->id : false,
 		]);

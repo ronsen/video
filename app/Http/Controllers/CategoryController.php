@@ -9,10 +9,13 @@ use Inertia\Inertia;
 use Inertia\Response;
 use App\Models\Category;
 use App\Models\Post;
+use App\Repositories\CategoryRepository;
 
 class CategoryController extends Controller
 {
 	const PER_PAGE = 9;
+
+	public function __construct(public CategoryRepository $categoryRepository) {}
 
 	public function show(string $slug, Request $request): Response
 	{
@@ -37,6 +40,7 @@ class CategoryController extends Controller
 		});
 
 		return Inertia::render('Categories/Show', [
+			'categories' => $this->categoryRepository->getCategories(),
 			'category' => $category,
 			'posts' => $posts,
 		]);

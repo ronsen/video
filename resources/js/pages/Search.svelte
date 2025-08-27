@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type { Category, Post } from "@/types";
 	import App from "@/layouts/App.svelte";
-	import Categories from "@/components/Categories.svelte";
 	import Posts from "@/components/Posts.svelte";
 
 	interface Props {
@@ -21,10 +20,8 @@
 	<title>{q}</title>
 </svelte:head>
 
-<App>
+<App {categories} {q}>
 	<div class="my-4 px-6">
-		<Categories {categories} />
-
 		<Posts {posts} showUser={true} />
 	</div>
 </App>

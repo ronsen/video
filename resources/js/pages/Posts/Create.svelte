@@ -39,7 +39,7 @@
 	<title>Add New Video</title>
 </svelte:head>
 
-<App>
+<App {categories}>
 	<div class="my-4 px-6">
 		<div class="md:max-w-2xl md:mx-auto">
 			<form onsubmit={submit}>
