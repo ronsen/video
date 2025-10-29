@@ -14,6 +14,7 @@
 	import Categories from "@/components/Categories.svelte";
 	import Search from "@/components/Search.svelte";
 	import type { Category } from "@/types";
+	import { fly } from "svelte/transition";
 
 	let {
 		children,
@@ -92,6 +93,7 @@
 
 {#if show}
 	<div
+		transition:fly={{ x: -200, duration: 50, easing: t => t*t }}
 		class="fixed h-screen top-0 left-0 bg-zinc-800 shadow w-full md:w-md z-10"
 	>
 		<div class="flex justify-end p-4">
