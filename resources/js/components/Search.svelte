@@ -5,7 +5,11 @@
 	let { q }: { q?: string } = $props();
 
 	let form = useForm({
-		q,
+		q: '',
+	});
+
+	$effect(() => {
+		$form.q = q ?? '';
 	});
 
 	function submit(e: SubmitEvent) {

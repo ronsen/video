@@ -7,11 +7,19 @@
 	let { post, categories }: { post: Post; categories: Category[] } = $props();
 
 	let form = useForm({
-		url: post.url,
-		title: post.title,
-		content: post.content,
-		private: post.private,
-		category: post.category,
+		url: '',
+		title: '',
+		content: '',
+		private: false,
+		category: 0 as number,
+	});
+
+	$effect(() => {
+		$form.url = post.url;
+		$form.title = post.title;
+		$form.content = post.content;
+		$form.private = post.private;
+		$form.category = post.category ?? 0;
 	});
 
 	function submit(e: SubmitEvent) {
