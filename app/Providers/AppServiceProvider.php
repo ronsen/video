@@ -15,7 +15,15 @@ class AppServiceProvider extends ServiceProvider
 	 */
 	public function register(): void
 	{
-		//
+		if (config('database.default') === 'sqlite') {
+			DB::statement('PRAGMA busy_timeout = 10000');
+			DB::statement('PRAGMA journal_mode = WAL');
+			DB::statement('PRAGMA journal_size_limit = 200000000');
+			DB::statement('PRAGMA synchronous = NORMAL');
+			DB::statement('PRAGMA foreign_keys = ON');
+			DB::statement('PRAGMA temp_store = MEMORY');
+			DB::statement('PRAGMA cache_size = -32000');
+		}
 	}
 
 	/**
