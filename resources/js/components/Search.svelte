@@ -5,16 +5,16 @@
 	let { q }: { q?: string } = $props();
 
 	let form = useForm({
-		q: '',
+		q: "",
 	});
 
 	$effect(() => {
-		$form.q = q ?? '';
+		form.q = q ?? "";
 	});
 
 	function submit(e: SubmitEvent) {
 		e.preventDefault();
-		$form.get("/search");
+		form.get("/search");
 	}
 </script>
 
@@ -28,7 +28,7 @@
 			</div>
 			<input
 				type="search"
-				bind:value={$form.q}
+				bind:value={form.q}
 				class="px-8 py-1 border border-zinc-600 bg-zinc-800 rounded-full text-white/90 w-full"
 				required
 			/>

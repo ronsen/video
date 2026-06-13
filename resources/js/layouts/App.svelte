@@ -47,14 +47,14 @@
 
 	<div class="flex md:flex-1 justify-end">
 		<div class="inline-flex gap-3">
-			{#if $page.props.auth.user}
+			{#if page.props.auth.user}
 				<Link
 					href="/posts/create"
 					class="text-zinc-400 hover:text-zinc-300"
 					><CirclePlus size={16} /></Link
 				>
 				<Link
-					href="/user/{$page.props.auth.user.id}/{$page.props.auth
+					href="/user/{page.props.auth.user.id}/{page.props.auth
 						.user.slug}"
 					class="text-zinc-400 hover:text-zinc-300"
 					><User size={16} /></Link
@@ -66,7 +66,7 @@
 				>
 			{/if}
 
-			{#if !$page.props.auth.user}
+			{#if !page.props.auth.user}
 				<Link href="/login" class="text-zinc-400 hover:text-zinc-300"
 					><LogIn size={16} /></Link
 				>
@@ -76,8 +76,8 @@
 </nav>
 
 <main class="container mx-auto mb-8">
-	{#if $page.props.flash}
-		<Alert>{@html $page.props.flash}</Alert>
+	{#if page.props.flash}
+		<Alert>{@html page.props.flash}</Alert>
 	{/if}
 
 	{@render children()}

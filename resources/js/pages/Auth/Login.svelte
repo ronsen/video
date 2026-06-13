@@ -12,8 +12,8 @@
 
 	function submit(e: SubmitEvent) {
 		e.preventDefault();
-		$form.post("/login", {
-			onFinish: () => $form.reset("password"),
+		form.post("/login", {
+			onFinish: () => form.reset("password"),
 		});
 	}
 </script>
@@ -39,33 +39,33 @@
 				<div class="mb-3">
 					<input
 						type="email"
-						bind:value={$form.email}
+						bind:value={form.email}
 						placeholder="E-mail"
 						class="border border-zinc-600 rounded-lg bg-zinc-800 text-white/90 w-full"
 					/>
-					{#if $form.errors.email}
+					{#if form.errors.email}
 						<div class="text-red-500 text-xs mt-1">
-							{$form.errors.email}
+							{form.errors.email}
 						</div>
 					{/if}
 				</div>
 				<div class="mb-3">
 					<input
 						type="password"
-						bind:value={$form.password}
+						bind:value={form.password}
 						placeholder="Password"
 						class="border border-zinc-600 rounded-lg bg-zinc-800 text-white/90 w-full"
 					/>
-					{#if $form.errors.password}
+					{#if form.errors.password}
 						<div class="text-red-500 text-xs mt-1">
-							{$form.errors.password}
+							{form.errors.password}
 						</div>
 					{/if}
 				</div>
 				<button
 					type="submit"
 					class="p-2 font-semibold border border-zinc-200 rounded-full bg-zinc-200 hover:bg-zinc-100 text-sm text-black/90 w-full"
-					disabled={$form.processing}>Log In</button
+					disabled={form.processing}>Log In</button
 				>
 			</form>
 		</div>

@@ -62,7 +62,7 @@
 					</div>
 				</div>
 
-				{#if $page.props.auth}
+				{#if page.props.auth}
 					{#if owner}
 						<div class="inline-flex items-center gap-3">
 							<a
