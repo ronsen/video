@@ -1,10 +1,8 @@
 <?php
 
-use Filament\Support\Commands\FileGenerators\FileGenerationFlag;
-
 return [
 
-	/*
+    /*
     |--------------------------------------------------------------------------
     | Broadcasting
     |--------------------------------------------------------------------------
@@ -16,24 +14,24 @@ return [
     |
     */
 
-	'broadcasting' => [
+    'broadcasting' => [
 
-		// 'echo' => [
-		//     'broadcaster' => 'pusher',
-		//     'key' => env('VITE_PUSHER_APP_KEY'),
-		//     'cluster' => env('VITE_PUSHER_APP_CLUSTER'),
-		//     'wsHost' => env('VITE_PUSHER_HOST'),
-		//     'wsPort' => env('VITE_PUSHER_PORT'),
-		//     'wssPort' => env('VITE_PUSHER_PORT'),
-		//     'authEndpoint' => '/broadcasting/auth',
-		//     'disableStats' => true,
-		//     'encrypted' => true,
-		//     'forceTLS' => true,
-		// ],
+        // 'echo' => [
+        //     'broadcaster' => 'pusher',
+        //     'key' => env('VITE_PUSHER_APP_KEY'),
+        //     'cluster' => env('VITE_PUSHER_APP_CLUSTER'),
+        //     'wsHost' => env('VITE_PUSHER_HOST'),
+        //     'wsPort' => env('VITE_PUSHER_PORT'),
+        //     'wssPort' => env('VITE_PUSHER_PORT'),
+        //     'authEndpoint' => '/broadcasting/auth',
+        //     'disableStats' => true,
+        //     'encrypted' => true,
+        //     'forceTLS' => env('VITE_PUSHER_SCHEME', 'https') === 'https',
+        // ],
 
-	],
+    ],
 
-	/*
+    /*
     |--------------------------------------------------------------------------
     | Default Filesystem Disk
     |--------------------------------------------------------------------------
@@ -43,9 +41,26 @@ return [
     |
     */
 
-	'default_filesystem_disk' => env('FILESYSTEM_DISK', 'local'),
+    'default_filesystem_disk' => env('FILESYSTEM_DISK', 'local'),
 
-	/*
+    /*
+    |--------------------------------------------------------------------------
+    | Temporary File URL Expiry
+    |--------------------------------------------------------------------------
+    |
+    | When Filament generates temporary URLs for previewing private files
+    | (file uploads, image columns, image entries, rich editor attachments,
+    | etc.), this value controls how many minutes those URLs remain valid.
+    |
+    | The generated URL's expiry is rounded up to the end of the hour it
+    | falls in, so the effective lifetime will be between this value and
+    | this value plus up to 60 minutes.
+    |
+    */
+
+    'temporary_file_url_expiry_minutes' => 30,
+
+    /*
     |--------------------------------------------------------------------------
     | Assets Path
     |--------------------------------------------------------------------------
@@ -57,9 +72,9 @@ return [
     |
     */
 
-	'assets_path' => null,
+    'assets_path' => null,
 
-	/*
+    /*
     |--------------------------------------------------------------------------
     | Cache Path
     |--------------------------------------------------------------------------
@@ -71,9 +86,9 @@ return [
     |
     */
 
-	'cache_path' => base_path('bootstrap/cache/filament'),
+    'cache_path' => base_path('bootstrap/cache/filament'),
 
-	/*
+    /*
     |--------------------------------------------------------------------------
     | Livewire Loading Delay
     |--------------------------------------------------------------------------
@@ -86,9 +101,9 @@ return [
     |
     */
 
-	'livewire_loading_delay' => 'default',
+    'livewire_loading_delay' => 'default',
 
-	/*
+    /*
     |--------------------------------------------------------------------------
     | File Generation
     |--------------------------------------------------------------------------
@@ -103,17 +118,11 @@ return [
     |
     */
 
-	'file_generation' => [
-		'flags' => [
-			FileGenerationFlag::EMBEDDED_PANEL_RESOURCE_SCHEMAS, // Define new forms and infolists inside the resource class instead of a separate schema class.
-			FileGenerationFlag::EMBEDDED_PANEL_RESOURCE_TABLES, // Define new tables inside the resource class instead of a separate table class.
-			FileGenerationFlag::PANEL_CLUSTER_CLASSES_OUTSIDE_DIRECTORIES, // Create new cluster classes outside of their directories. Not required if you run `php artisan filament:upgrade-directory-structure-to-v4`.
-			FileGenerationFlag::PANEL_RESOURCE_CLASSES_OUTSIDE_DIRECTORIES, // Create new resource classes outside of their directories. Not required if you run `php artisan filament:upgrade-directory-structure-to-v4`.
-			FileGenerationFlag::PARTIAL_IMPORTS, // Partially import components such as form fields and table columns instead of importing each component explicitly.
-		],
-	],
+    'file_generation' => [
+        'flags' => [],
+    ],
 
-	/*
+    /*
     |--------------------------------------------------------------------------
     | System Route Prefix
     |--------------------------------------------------------------------------
@@ -123,6 +132,6 @@ return [
     |
     */
 
-	'system_route_prefix' => 'filament',
+    'system_route_prefix' => 'filament',
 
 ];
