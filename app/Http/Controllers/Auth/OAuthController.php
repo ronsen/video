@@ -24,8 +24,8 @@ class OAuthController extends Controller
 
 		if (!$user) {
 			$user = User::create([
-				'name' => $authUser->name,
-				'email' => $authUser->email,
+				'name' => $authUser->getName(),
+				'email' => $authUser->getEmail(),
 			]);
 
 			event(new Registered($user));
